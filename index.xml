@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ade Duke</title>
-    <link>http://adrianduke.github.io/blog/</link>
+    <link>http://adeduke.com/</link>
     <description>Recent content on Ade Duke</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Sun, 29 Mar 2015 19:55:00 +0000</lastBuildDate>
-    <atom:link href="http://adrianduke.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://adeduke.com/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Projects</title>
-      <link>http://adrianduke.github.io/blog/projects/</link>
+      <link>http://adeduke.com/projects/</link>
       <pubDate>Sun, 29 Mar 2015 19:55:00 +0000</pubDate>
       
-      <guid>http://adrianduke.github.io/blog/projects/</guid>
+      <guid>http://adeduke.com/projects/</guid>
       <description>&lt;div class=&#34;user-card&#34;&gt;
   &lt;div class=&#34;row&#34;&gt;
     &lt;div class=&#34;card col-md-3&#34;&gt;
-      &lt;img src=&#34;http://adrianduke.github.io/blog/media/vaiex-wings.png&#34;&gt;
+      &lt;img src=&#34;http://adeduke.com/media/vaiex-wings.png&#34;&gt;
     &lt;/div&gt;
     &lt;div class=&#34;col-md-9&#34;&gt;
       &lt;h1&gt;Vaiex&lt;/h1&gt;
@@ -36,17 +36,17 @@
     
     <item>
       <title>About</title>
-      <link>http://adrianduke.github.io/blog/about/</link>
+      <link>http://adeduke.com/about/</link>
       <pubDate>Sun, 22 Feb 2015 20:16:43 +0000</pubDate>
       
-      <guid>http://adrianduke.github.io/blog/about/</guid>
+      <guid>http://adeduke.com/about/</guid>
       <description>&lt;div class=&#34;container&#34;&gt;
   &lt;div class=&#34;container&#34;&gt;
     &lt;div class=&#34;row&#34;&gt;
       &lt;div class=&#34;user-card&#34;&gt;
         &lt;div class=&#34;row&#34;&gt;
           &lt;div class=&#34;card col-md-3&#34;&gt;
-            &lt;img src=&#34;http://adrianduke.github.io/blog/media/adeduke.png&#34;&gt;
+            &lt;img src=&#34;http://adeduke.com/media/adeduke.png&#34;&gt;
           &lt;/div&gt;
           &lt;div class=&#34;col-md-9&#34;&gt;
             &lt;h1&gt;Ade Duke&lt;/h1&gt;

@@ -1,0 +1,21 @@
+baseurl: "http://http://adrianduke.github.io/blog"
+languageCode: "en-gb"
+title: "Ade Duke"
+canonifyurls: true
+permalinks:
+  blog: /:year/:month/:title/
+taxonomies:
+  tag: "tags"
+MetaDataFormat: yaml
+Paginate: 15
+params:
+  ProfilePicture: "/media/orange_slice.png"
+  AuthorName: "Ade Duke"
+  Description: "Asorted ramblings of mine"
+  github: "https://www.github.com/adrianduke"
+  twitter: "https://www.twitter.com/adeduke"
+  linkedin: "https://www.linkedin.com/profile/view?id=99981914"
+  keybase: "https://keybase.io/adrianduke"
+  links:
+    Home: "/"
+    Projects: "/projects"

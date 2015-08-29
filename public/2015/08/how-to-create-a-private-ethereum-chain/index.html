@@ -30,9 +30,9 @@
               <ul class="nav navbar-nav">
                 
                 
-                <li><a href="http://adeduke.com/">Home </a></li>
-                
                 <li><a href="http://adeduke.com/projects">Projects </a></li>
+                
+                <li><a href="http://adeduke.com/">Home </a></li>
                 
               </ul>
             </div>
@@ -42,7 +42,7 @@
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
           <a href="http://adeduke.com/"><img src="http://adeduke.com/media/orange_slice.png" /></a>
-          <li class="sidebar-brand"><a href="http://adeduke.com/"><h1 class="brand">Ade Duke</h1></a><h3>Asorted ramblings of mine</h3></li>
+          <li class="sidebar-brand"><a href="http://adeduke.com/"><h1 class="brand">Ade Duke</h1></a><h3>Assorted ramblings of mine</h3></li>
           <hr />
           
           <li><a href="http://adeduke.com/">Home </a></li>
@@ -172,7 +172,7 @@ $ rm -rf `ls | grep -v keystore`
 }
 </code></pre>
 
-<p>Now re-run the geth command using the newly updated genesis json file and the same datadir, when check your account balance you will find you now have 10 ether:</p>
+<p>Now re-run the geth command using the newly updated genesis json file and the same datadir, when you check your account balance you will find you now have 10 ether:</p>
 
 <pre><code>$ geth --genesis &lt;updated genesis json file path&gt; --datadir /.../dapps/test-genesis/.ethereum --networkid 123 --nodiscover --maxpeers 0 console
   I0829 13:30:07.340636    3987 database.go:74] Alloted 16MB cache to /.../dapps/test-genesis/.ethereum/blockchain

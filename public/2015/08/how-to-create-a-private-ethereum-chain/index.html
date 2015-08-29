@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>How To Create A Private Ethereum Chain</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Short post on how to create a private ethereum blockchain for testing contracts or playing around with">
+    <link href="" rel="alternate" type="application/rss+xml" title="Ade Duke" />
+    <link href="http://adeduke.com/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://adeduke.com/css/hc.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    
+    
+  </head>
+  <body>
+    
+    <div id ="wrapper">
+      <div class="navbar navbar-default" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <p class="navbar-brand">Ade Duke</p>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                
+                
+                <li><a href="http://adeduke.com/">Home </a></li>
+                
+                <li><a href="http://adeduke.com/projects">Projects </a></li>
+                
+              </ul>
+            </div>
+          </div>
+      </div>
+      
+      <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <a href="http://adeduke.com/"><img src="http://adeduke.com/media/orange_slice.png" /></a>
+          <li class="sidebar-brand"><a href="http://adeduke.com/"><h1 class="brand">Ade Duke</h1></a><h3>Asorted ramblings of mine</h3></li>
+          <hr />
+          
+          <li><a href="http://adeduke.com/">Home </a></li>
+          
+          <li><a href="http://adeduke.com/projects">Projects </a></li>
+          
+          <hr />
+          <div id="social-wrapper">
+             <li> <a href="https://www.twitter.com/adeduke"><i class="fa fa-twitter-square"></i> @adeduke</a></li>
+             <li> <a href="https://www.linkedin.com/profile/view?id=99981914"><i class="fa fa-linkedin-square"></i> linkedin</a> </li>
+             
+             <li> <a href="https://www.github.com/adrianduke"><i class="fa fa-github-square"></i> github</a> </li>
+             <li> <a href="https://keybase.io/adrianduke"><i class="fa fa-key"></i> keybase</a> </li>
+           </div>
+         </ul>
+      </div>
+      <div class="container">
+
+        <div id="article">
+          <div class="article-title">How To Create A Private Ethereum Chain</div>
+          <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 2015-08-29</small></p>
+          <hr/>
+          <div class="post">
+            <div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-md-3">
+            <img src="http://adeduke.com/media/2015/08/ethereum-logo.png" title="Ethereum logo" class="img-responsive img-thumbnail img-circle center-block">
+        </div>
+        <div class="col-xs-12 col-md-9">
+            <p class="lead">Setting up a private chain is useful for testing purposes or simply for playing around with, I couldn't find a good consolidated tutorial on it so I thought I would write my own.</p>
+            <p>Before we get started you are going to need to have an appropriate ethereum client installed, your choices are:</p>
+            <ul>
+                <li>
+                    <a href="https://github.com/ethereum/cpp-ethereum/wiki">Eth</a> - C++ implementation
+                </li>
+                <li>
+                    <a href="https://github.com/ethereum/go-ethereum/wiki">Geth</a> - Go implementation
+                </li>
+            </ul>
+            <p>Either will do, but for the purposes of this guide I will provide instructions on Geth. You can find good documentation on the install process over on the <a href="http://ethereum.gitbooks.io/frontier-guide/content/getting_a_client.html">frontier gitbook</a>.</p>
+        </div>
+    </div>
+</div>
+
+<h3>The genesis block</h3>
+
+<p>The crux of what we want to achieve is defined in whats called a &lsquo;genesis block&rsquo;, it can be likened to the first item in a linked list, or non-technically the first link in a chain. The only difference that I am aware of is that it has no reference to a previous block (or has no chain link before it). In the Bitcoin world the genesis block is <a href="https://en.bitcoin.it/wiki/Genesis_block">hardcoded into clients</a> but for Ethereum it can be anything you like. You might think thats a flaw in the system being able to decide the starting conditions of the chain, but the consensus algorithm will ensure that no other node will agree with your version of the blockchain unless they have the same genesis block (and some other crucial parameters, discussed later).</p>
+
+<p>Great, so how do we make one of these genesis blocks? Well its fairly simple the following JSON is all you really need:</p>
+
+<pre><code>{
+	&quot;nonce&quot;: &quot;0xdeadbeefdeadbeef&quot;,
+	&quot;timestamp&quot;: &quot;0x0&quot;,
+	&quot;parentHash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+	&quot;extraData&quot;: &quot;0x0&quot;,
+	&quot;gasLimit&quot;: &quot;0x8000000&quot;,
+	&quot;difficulty&quot;: &quot;0x400&quot;,
+	&quot;mixhash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+	&quot;coinbase&quot;: &quot;0x3333333333333333333333333333333333333333&quot;,
+	&quot;alloc&quot;: {
+	}
+}
+</code></pre>
+
+<p><small>Kudos to <a href="https://github.com/obscuren">obscuren</a></small></p>
+
+<p>Place this JSON into a file somewhere on your local disk and run the following command:</p>
+
+<pre><code>$ geth --genesis &lt;genesis json file path&gt; --datadir &lt;some path to an empty folder&gt; --networkid 123 --nodiscover --maxpeers 0 console
+</code></pre>
+
+<p>This command does a few things:</p>
+
+<ol>
+<li>It utilises the genesis block json to seed the blockchain</li>
+<li>It uses the datadir to store all state necessary to maintain the newly created blockchain and other data (declared to prevent you clobbering your main net data, wouldn&rsquo;t want to overwrite all those blocks you spent time downloading!)</li>
+<li>Use a network id other than &lsquo;1&rsquo; to ensure we can&rsquo;t talk to nodes from the main network &ndash; &ldquo;connections between nodes are valid only if peers have identical protocol version and network id&rdquo;</li>
+<li>Disable peer discovery</li>
+<li>Disable network by setting maxpeers to 0</li>
+<li>Starts geth in console mode so you can interact with your new blockchain / node</li>
+</ol>
+
+<p>From here you can follow steps in the <a href="http://ethereum.gitbooks.io/frontier-guide/content/testing_contracts_and_transactions.html">testing contracts and transactions</a> git book entry on creating accounts and mining. The differences here from there are that I have elected to disable RPC, the pprof performance metric gathering processes, extra verbosity and vmdebug for simplicities sake.</p>
+
+<p>Note the difficulty is set very low in the above genesis block, this allowed my local machine to mine blocks in 100&rsquo;s of milliseconds, that will make it very easy for you to gain ether.</p>
+
+<h3>Pre-seeding accounts with allocation</h3>
+
+<p>Once you have got the above going you may find it useful to be able to pre-seed an account with ether (to save from mining). Its fairly simple, to start with create a new blockchain and generate a new account:</p>
+
+<pre><code>$ geth --genesis &lt;genesis json file path&gt; --datadir /.../dapps/test-genesis/.ethereum --networkid 123 --nodiscover --maxpeers 0 console
+  I0829 13:30:07.340636    3987 database.go:74] Alloted 16MB cache to /.../dapps/test-genesis/.ethereum/blockchain
+  I0829 13:30:07.342982    3987 database.go:74] Alloted 16MB cache to /.../dapps/test-genesis/.ethereum/state
+  I0829 13:30:07.345055    3987 database.go:74] Alloted 16MB cache to /.../dapps/test-genesis/.ethereum/extra
+  I0829 13:30:07.347363    3987 backend.go:291] Protocol Versions: [61 60], Network Id: 12345
+  I0829 13:30:07.347738    3987 backend.go:303] Successfully wrote genesis block. New genesis hash = 82b6159155c00fb0b420046012a02257a176ad5dcfce4be4a15da39c166518e2
+  I0829 13:30:07.347771    3987 backend.go:328] Blockchain DB Version: 3
+  I0829 13:30:07.347866    3987 chain_manager.go:241] Last block (#0) 82b6159155c00fb0b420046012a02257a176ad5dcfce4be4a15da39c166518e2 TD=1024
+  I0829 13:30:07.353373    3987 cmd.go:124] Starting Geth/v1.0.1/darwin/go1.4.2
+  I0829 13:30:07.353470    3987 server.go:312] Starting Server
+  I0829 13:30:07.353610    3987 backend.go:564] Server started
+  I0829 13:30:07.353548    3987 server.go:549] Listening on [::]:30310
+  I0829 13:30:07.353961    3987 ipc_unix.go:78] IPC service started (/.../dapps/test-genesis/.ethereum/geth.ipc)
+  instance: Geth/v1.0.1/darwin/go1.4.2
+   datadir: /.../dapps/test-genesis/.ethereum
+   coinbase: 0x1fb891f92eb557f4d688463d0d7c560552263b5a
+   at block: 0 (1970-01-01 01:00:00)
+    modules: admin:1.0 db:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 shh:1.0 txpool:1.0 web3:1.0
+&gt; personal.newAccount(&quot;mypassword&quot;);
+  '0x1fb891f92eb557f4d688463d0d7c560552263b5a'
+</code></pre>
+
+<p>The last command above generated a new account with address <code>0x1fb891f92eb557f4d688463d0d7c560552263b5a</code>.</p>
+
+<p>Once you&rsquo;ve generated your account, quit geth with <strong>&lt;ctrl-c&gt;</strong> and remove every folder except <code>keystore/</code> from your datadir:</p>
+
+<pre><code>$ cd &lt;your datadir&gt;
+$ rm -rf `ls | grep -v keystore`
+</code></pre>
+
+<p>Now for the magic, update your genesis block json, adding the following to the <code>alloc</code> key:</p>
+
+<pre><code>&quot;alloc&quot;: {
+	&quot;&lt;your account address e.g. 0x1fb891f92eb557f4d688463d0d7c560552263b5a&gt;&quot;: {
+		&quot;balance&quot;: &quot;10000000000000000000&quot;
+	}
+}
+</code></pre>
+
+<p>Now re-run the geth command using the newly updated genesis json file and the same datadir, when check your account balance you will find you now have 10 ether:</p>
+
+<pre><code>$ geth --genesis &lt;updated genesis json file path&gt; --datadir /.../dapps/test-genesis/.ethereum --networkid 123 --nodiscover --maxpeers 0 console
+  I0829 13:30:07.340636    3987 database.go:74] Alloted 16MB cache to /.../dapps/test-genesis/.ethereum/blockchain
+  I0829 13:30:07.342982    3987 database.go:74] Alloted 16MB cache to /.../dapps/test-genesis/.ethereum/state
+  I0829 13:30:07.345055    3987 database.go:74] Alloted 16MB cache to /.../dapps/test-genesis/.ethereum/extra
+  I0829 13:30:07.347363    3987 backend.go:291] Protocol Versions: [61 60], Network Id: 12345
+  I0829 13:30:07.347738    3987 backend.go:303] Successfully wrote genesis block. New genesis hash = 82b6159155c00fb0b420046012a02257a176ad5dcfce4be4a15da39c166518e2
+  I0829 13:30:07.347771    3987 backend.go:328] Blockchain DB Version: 3
+  I0829 13:30:07.347866    3987 chain_manager.go:241] Last block (#0) 82b6159155c00fb0b420046012a02257a176ad5dcfce4be4a15da39c166518e2 TD=1024
+  I0829 13:30:07.353373    3987 cmd.go:124] Starting Geth/v1.0.1/darwin/go1.4.2
+  I0829 13:30:07.353470    3987 server.go:312] Starting Server
+  I0829 13:30:07.353610    3987 backend.go:564] Server started
+  I0829 13:30:07.353548    3987 server.go:549] Listening on [::]:30310
+  I0829 13:30:07.353961    3987 ipc_unix.go:78] IPC service started (/.../dapps/test-genesis/.ethereum/geth.ipc)
+  instance: Geth/v1.0.1/darwin/go1.4.2
+   datadir: /.../dapps/test-genesis/.ethereum
+   coinbase: 0x1fb891f92eb557f4d688463d0d7c560552263b5a
+   at block: 0 (1970-01-01 01:00:00)
+    modules: admin:1.0 db:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 shh:1.0 txpool:1.0 web3:1.0
+&gt; primary = eth.accounts[0];
+  '0x1fb891f92eb557f4d688463d0d7c560552263b5a'
+&gt; balance = web3.fromWei(eth.getBalance(primary), &quot;ether&quot;);
+  '10'
+</code></pre>
+
+          </div>
+          <p class="text-center"><a href="https://twitter.com/share" class="twitter-share-button " data-size="small" data-count="none">Tweet</a></p>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </div>
+        <ul class="pager">
+          
+          
+        </ul>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+	(function() {
+		
+		
+		if (window.location.hostname == "localhost") {
+			return;
+		}
+
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		var disqus_shortname = 'adeduke';
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+    <footer>
+        <p class="text-muted credit">&copy; 2015. All rights reserved.</p>
+    </footer>
+    
+    <script src="http://adeduke.com/js/jquery-1.10.2.min.js"></script>
+    <script src="http://adeduke.com/js/bootstrap.min.js"></script>
+    <script src="http://adeduke.com/js/bootstrap.js"></script>
+    <script type="text/javascript" src="http://adeduke.com/js/hc.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-35718583-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>
+

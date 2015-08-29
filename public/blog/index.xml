@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ade Duke</title>
-    <link>http://adeduke.com/</link>
-    <description>Recent content on Ade Duke</description>
+    <title>Blogs on Ade Duke</title>
+    <link>http://adeduke.com/blog/</link>
+    <description>Recent content in Blogs on Ade Duke</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Sat, 29 Aug 2015 13:51:57 +0100</lastBuildDate>
-    <atom:link href="http://adeduke.com/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://adeduke.com/blog/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>How To Create A Private Ethereum Chain</title>
@@ -146,58 +146,6 @@ $ rm -rf `ls | grep -v keystore`
 &amp;gt; balance = web3.fromWei(eth.getBalance(primary), &amp;quot;ether&amp;quot;);
   &#39;10&#39;
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Projects</title>
-      <link>http://adeduke.com/projects/</link>
-      <pubDate>Sun, 29 Mar 2015 19:55:00 +0000</pubDate>
-      
-      <guid>http://adeduke.com/projects/</guid>
-      <description>&lt;div class=&#34;user-card&#34;&gt;
-  &lt;div class=&#34;row&#34;&gt;
-    &lt;div class=&#34;card col-md-3&#34;&gt;
-      &lt;img src=&#34;http://adeduke.com/media/vaiex-wings.png&#34;&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;col-md-9&#34;&gt;
-      &lt;h1&gt;Vaiex&lt;/h1&gt;
-      &lt;p&gt;&lt;i class=&#34;fa fa-user&#34;&gt;&lt;/i&gt;&amp;nbsp;&amp;nbsp;Co-founder and CTO&lt;/p&gt;
-      &lt;p&gt;&lt;i class=&#34;fa fa-map-marker&#34;&gt;&lt;/i&gt;&amp;nbsp;&amp;nbsp;London, UK&lt;/p&gt;
-      &lt;p&gt;&lt;i class=&#34;fa fa-link&#34;&gt;&lt;/i&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&#34;https://www.vaiex.com&#34; title=&#34;Vaiex&#34;&gt;https://www.vaiex.com&lt;/a&gt;&lt;/p&gt;
-      &lt;hr /&gt;
-      &lt;span class=&#34;lead&#34;&gt;Simple, secure and professional digital assets exchange. Think forex meets &lt;a href=&#34;http://en.wikipedia.org/wiki/Cryptocurrency&#34;&gt;crypto-currencies&lt;/a&gt;.&lt;/span&gt;
-      &lt;p&gt;&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>http://adeduke.com/about/</link>
-      <pubDate>Sun, 22 Feb 2015 20:16:43 +0000</pubDate>
-      
-      <guid>http://adeduke.com/about/</guid>
-      <description>&lt;div class=&#34;container&#34;&gt;
-  &lt;div class=&#34;container&#34;&gt;
-    &lt;div class=&#34;row&#34;&gt;
-      &lt;div class=&#34;user-card&#34;&gt;
-        &lt;div class=&#34;row&#34;&gt;
-          &lt;div class=&#34;card col-md-3&#34;&gt;
-            &lt;img src=&#34;http://adeduke.com/media/adeduke.png&#34;&gt;
-          &lt;/div&gt;
-          &lt;div class=&#34;col-md-9&#34;&gt;
-            &lt;h1&gt;Ade Duke&lt;/h1&gt;
-            &lt;p&gt;&lt;i class=&#34;fa fa-map-marker&#34;&gt;&lt;/i&gt;&amp;nbsp;&amp;nbsp;London, UK&lt;/p&gt;
-            &lt;p&gt;&lt;i class=&#34;fa fa-envelope-o&#34;&gt;&lt;/i&gt;&amp;nbsp;&amp;nbsp;adrian.duke [at] gmail.com&lt;/p&gt;
-            &lt;hr /&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
 </description>
     </item>
     

@@ -114,7 +114,7 @@ Now for the magic, update your genesis block json, adding the following to the `
 }
 ```
 
-Now re-run the geth command using the newly updated genesis json file and the same datadir, when check your account balance you will find you now have 10 ether:
+Now re-run the geth command using the newly updated genesis json file and the same datadir, when you check your account balance you will find you now have 10 ether:
 
 ```
 $ geth --genesis <updated genesis json file path> --datadir /.../dapps/test-genesis/.ethereum --networkid 123 --nodiscover --maxpeers 0 console

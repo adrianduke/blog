@@ -158,7 +158,7 @@ $ rm -rf `ls | grep -v keystore`
       <description>&lt;div class=&#34;user-card&#34;&gt;
   &lt;div class=&#34;row&#34;&gt;
     &lt;div class=&#34;card col-md-3&#34;&gt;
-      &lt;img src=&#34;http://adeduke.com/media/vaiex-wings.png&#34;&gt;
+      &lt;img src=&#34;http://adeduke.com/media/vaiex-wings.png&#34; title=&#34;Vaiex logo&#34;&gt;
     &lt;/div&gt;
     &lt;div class=&#34;col-md-9&#34;&gt;
       &lt;h1&gt;Vaiex&lt;/h1&gt;

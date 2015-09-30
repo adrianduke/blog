@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <link href="" rel="alternate" type="application/rss+xml" title="Ade Duke" />
+    <link href="http://localhost:1313//css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost:1313//css/hc.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    
+    
+  </head>
+  <body>
+    
+    <div id ="wrapper">
+      <div class="navbar navbar-default" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <p class="navbar-brand">Ade Duke</p>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                
+                
+                <li><a href="http://localhost:1313//">Home </a></li>
+                
+                <li><a href="http://localhost:1313//projects">Projects </a></li>
+                
+              </ul>
+            </div>
+          </div>
+      </div>
+      
+      <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <a href="http://localhost:1313//"><img src="http://localhost:1313/media/orange_slice.png" /></a>
+          <li class="sidebar-brand"><a href="http://localhost:1313//"><h1 class="brand">Ade Duke</h1></a><h3>Assorted ramblings of mine</h3></li>
+          <hr />
+          
+          <li><a href="http://localhost:1313//">Home </a></li>
+          
+          <li><a href="http://localhost:1313//projects">Projects </a></li>
+          
+          <hr />
+          <div id="social-wrapper">
+             <li> <a href="https://www.twitter.com/adeduke"><i class="fa fa-twitter-square"></i> @adeduke</a></li>
+             <li> <a href="https://www.linkedin.com/profile/view?id=99981914"><i class="fa fa-linkedin-square"></i> linkedin</a> </li>
+             
+             <li> <a href="https://www.github.com/adrianduke"><i class="fa fa-github-square"></i> github</a> </li>
+             <li> <a href="https://keybase.io/adrianduke"><i class="fa fa-key"></i> keybase</a> </li>
+           </div>
+         </ul>
+      </div>
+      <div class="container">
+
+        <div id="article">
+          <div class="article-title"></div>
+          <p class="meta"><small>&nbsp;<i class="fa fa-calendar-o"></i> 0001-01-01</small></p>
+          <hr/>
+          <div class="post">
+            
+
+<h2 id="what:55c470c7690bdfbade1f6280f1777cfd">What</h2>
+
+<p>Test-Driven Development is a discipline for writing software. The developer works in a short repetitive cycle known commonly as: Red, Green, Refactor. Each phase of the cycle requiring different action to be undertaken:</p>
+
+<ol>
+<li><a href="#red"><strong>Red</strong>: Write a failing test</a></li>
+<li><a href="#green"><strong>Green</strong>: Write just enough code to pass the test</a></li>
+<li><a href="#refactor"><strong>Refactor</strong>: Refactor both tests and production code</a></li>
+</ol>
+
+<p>As TDD is a discipline, it like other disciplines requires practise. Practising TDD on a particular problem is commonly called a &lsquo;Code Kata&rsquo;. Code Katas should be practised regularly when an active project employing TDD is not being undertaken, this will ensure the developer doesn&rsquo;t lose the discipline.</p>
+
+<h2 id="why:55c470c7690bdfbade1f6280f1777cfd">Why</h2>
+
+<p>Writing the minimum amount of bug free code to satisfy requirements is hard, really hard.</p>
+
+<p>Every line of code written by a developer has the potential to introduce new bugs into the system, every method composed has the potential to veer away from the requirements and every design pattern introduced has the potential to add un-needed complexity. Add to this that there are many solutions to any given software problem and that developers come with their own set of flaws and you quickly see the cocktail of complexity emerging. No wonder then why ~65% of software projects undertaken fail (note that the developer isn&rsquo;t the sole reason for this failure rate, but is definitely apart of it).</p>
+
+<p>It is for these reasons I use TDD. TDD provides an assurance that bare back development does not, and its not just as developers that we see the benefits. The benefits that I have found from practising TDD are as follows:</p>
+
+<h4 id="beneficiaries:55c470c7690bdfbade1f6280f1777cfd">Beneficiaries:</h4>
+
+<ul>
+<li>Code</li>
+<li>Developer</li>
+<li>Business</li>
+<li>Process (Software development process)</li>
+</ul>
+
+<h4 id="benefits:55c470c7690bdfbade1f6280f1777cfd">Benefits:</h4>
+
+<ul>
+<li><strong>Facilitating change</strong>: Being able to make large changes to your existing system is much less daunting and risky when you know you have tests to cover your back. [<em>Developer, Business</em>]</li>
+<li><strong>Better design</strong>: You naturally develop with modularisation in mind, otherwise you wouldn&rsquo;t be able to test the code you are writing. [<em>Code, Developer</em>]</li>
+<li><strong>Living documentation</strong>: Provided you name your tests well, all the documentation required for another developer to understand your code is in the tests. [<em>Code, Developer</em>]</li>
+<li><strong>Ease integrations</strong>: Connecting distant services becomes much less of an ordeal when you practise TDD as both ends have already been tested with mocks. [<em>Business, Developer</em>]</li>
+<li><strong>Flow and productivity</strong>: Spending less time debugging (which naturally reduces with TDD) means you spend more time developing, and moving forwards is much more productive. [<em>Process, Developer</em>]</li>
+<li><strong>Stronger guarantees</strong>: When you practise TDD you have larger guarantee that the code you deploy works. [<em>Business, Developer, Code</em>]</li>
+<li><strong>Regression</strong>: Regression tests are baked into the TDD process, thus you get regression tests for free. [<em>Business, Developer, Code</em>]</li>
+</ul>
+
+<h2 id="how:55c470c7690bdfbade1f6280f1777cfd">How</h2>
+
+<h3 id="a-name-red-a-red-writing-failing-tests:55c470c7690bdfbade1f6280f1777cfd"><a name="red"></a>RED: Writing Failing Tests</h3>
+
+<h4 id="naming-tests:55c470c7690bdfbade1f6280f1777cfd">Naming Tests</h4>
+
+<p>Naming tests is the first step of the Red phase and sometimes seen as the hardest part of TDD, and rightly so, as everyone knows the 2 hardest problems in computing sciences is cache invalidation and naming things (Phil Karlton). The aim is to summerise in a sentance the specific behaviour you require, and call your test that. Here are a few examples:</p>
+
+<p><a name="fizzbuzz-naming"></a>Lets imagine we are implementing FizzBuzz. The first and simplest test case we know is that when given the number 1, it prints the number 1, so lets call it just that: &lsquo;<strong>TestItPrints1WhenGiven1</strong>&rsquo;. Next test case is that when given the number 2 it prints the number 2, so lets keep consistent and call it: &lsquo;<strong>TestItPrints2WhenGiven2</strong>&lsquo;</p>
+
+<p>Lets now imagine we are implementing a javascript powered menu that converts a UL into an interactive menu. Our first behaviour here is likely that given an ID it grabs the DOM element so lets call our first test case: &lsquo;<strong>TestItGetsDomElementById</strong>&rsquo;. Now we can get DOM elements our second behaviour is that it will display a warning if the DOM element got by ID is not an UL, so lets call that: &lsquo;<strong>TestItDisplaysWarningIfDomElementIsNotUL</strong>&lsquo;</p>
+
+<p>As you can see, each test name is an apt summary of exactly the behaviour we require, there is no ambiguity about what the production code should be doing.</p>
+
+<h4 id="writing-the-test-case:55c470c7690bdfbade1f6280f1777cfd">Writing The Test Case</h4>
+
+<p>Writing tests at an abstract level is about 2 things:</p>
+
+<ol>
+<li>Scaffolding how you intend your code to work. E.g. The method name you intend to call and what parameters (if any) it will accept, and what it may or may not return.</li>
+<li>Defining the acceptance criterea that signals if the code is working or not. E.g. In our FizzBuzz example above, when our method receives a &lsquo;1&rsquo; it is only considered working if it returns a &lsquo;1&rsquo; and not if it returned a &lsquo;2&rsquo;.</li>
+</ol>
+
+<p>Once you have your behaviour and name hopefully its fairly evident exactly what you need to do. To help solidify this, follow along the FizzBuzz example below:</p>
+
+<h5 id="red-fizzbuzz-step-1:55c470c7690bdfbade1f6280f1777cfd">Red: FizzBuzz Step 1</h5>
+
+<p>Following on from the <a href="#fizzbuzz-naming">FizzBuzz test name</a> examples above, here is the first test for &lsquo;<strong>TestItPrints1WhenGiven1</strong>&lsquo;:</p>
+
+<pre><code class="language-php">&lt;?
+function TestItPrints1WhenGiven1() {
+	if (Translate(1) != 1) {
+		print(&quot;FAIL! &quot;. Translate(1) . &quot; != 1&quot;);
+	}
+}
+</code></pre>
+
+<p>I have elected to call the method under test <code>Transalate()</code> and it takes a single argument, the int that we want to translate (or not). Notice that <code>Translate()</code> doesn&rsquo;t exist yet, another benefit of TDD is that you get to decide on your public interfaces before you write them, not after!</p>
+
+<p>If I were to run the above, I should get an error along the lines of no method <code>Translate()</code> exists. This is sufficient for the Red phase, we can now move onto the <a href="#green">&gt;&gt;&gt; <strong>Green phase</strong></a>.</p>
+
+<h5 id="a-name-fizzbuzz-red-2-a-red-fizzbuzz-step-2:55c470c7690bdfbade1f6280f1777cfd"><a name="fizzbuzz-red-2"></a>Red: FizzBuzz Step 2</h5>
+
+<p>Now that we have 1 passing test and nothing to refactor, we can move onto writing our second test &lsquo;<strong>TestItPrints2WhenGiven2</strong>&lsquo;:</p>
+
+<pre><code class="language-php">&lt;?
+function TestItPrints2WhenGiven2() {
+	if (Translate(2) != 2) {
+		print(&quot;FAIL! &quot;. Translate(2) . &quot; != 2&quot;);
+	}
+}
+</code></pre>
+
+<p>Running the above produces:</p>
+
+<pre><code>FAIL! 1 != 2
+</code></pre>
+
+<p>This looks rather similar to our first test, and that has been noted. We will get to it in the next Refactor phase, but for now onto <a href="#fizzbuzz-green-2">&gt;&gt;&gt; <strong>Green phase</strong></a>.</p>
+
+<h5 id="a-name-fizzbuzz-red-3-a-red-fizzbuzz-step-3:55c470c7690bdfbade1f6280f1777cfd"><a name="fizzbuzz-red-3"></a>Red: FizzBuzz Step 3</h5>
+
+<p>We now have 2 passing tests, albeit very simple, our next test however is where things get interesting. We now hit the case where by we pass &lsquo;3&rsquo; to our <code>Translate()</code> method and require it to return &lsquo;Fizz&rsquo;. I think we should call our test &lsquo;<strong>TestItPrintsFizzWhenGiven3</strong>&rsquo;, and heres what it looks like:</p>
+
+<pre><code class="language-php">&lt;?
+function TestItPrintsFizzWhenGiven3() {
+	assertItTranslatesArgIntoExpected(3, &quot;Fizz&quot;);
+}
+</code></pre>
+
+<p>Running the above produces:</p>
+
+<pre><code>FAIL! 3 != Fizz
+</code></pre>
+
+<p>Luckily as we refactored our code, implementing this test was just a 1 liner. Onto the <a href="#fizzbuzz-green-3">&gt;&gt;&gt; <strong>Green phase</strong></a>.</p>
+
+<h5 id="a-name-fizzbuzz-red-4-a-red-fizzbuzz-step-4:55c470c7690bdfbade1f6280f1777cfd"><a name="fizzbuzz-red-4"></a>Red: FizzBuzz Step 4</h5>
+
+<p>We are going to skip testing arg value of &lsquo;4&rsquo; for the sakes of page length, and move straight onto &lsquo;5&rsquo;. Now we need our code to return &lsquo;Buzz&rsquo; when it receives a &lsquo;5&rsquo; so I think &lsquo;<strong>TestItReturnsBuzzWhenGiven5</strong>&rsquo; is suitable:</p>
+
+<pre><code class="language-php">&lt;?
+function TestItPrintsBuzzWhenGiven5() {
+	assertItTranslatesArgIntoExpected(5, &quot;Buzz&quot;);
+}
+</code></pre>
+
+<p>Running the above produces:</p>
+
+<pre><code>FAIL! 5 != Buzz
+</code></pre>
+
+<p>Onto the <a href="#fizzbuzz-green-4">&gt;&gt;&gt; <strong>Green phase</strong></a>.</p>
+
+<h5 id="a-name-fizzbuzz-red-5-a-red-fizzbuzz-step-5:55c470c7690bdfbade1f6280f1777cfd"><a name="fizzbuzz-red-5"></a>Red: FizzBuzz Step 5</h5>
+
+<p>We now move onto an arg value of &lsquo;6&rsquo;, continuing in the same vein I am going to choose the test name &lsquo;<strong>TestItPrintsFizzWhenGiven6</strong>&rsquo;. My refactoring sense are tingling, we appear to have 2 tests that take an argument and return &lsquo;Fizz&rsquo;, but we will leave that until the next Refactoring phase:</p>
+
+<pre><code class="language-php">&lt;?
+function TestItPrintsFizzWhenGiven6() {
+	assertItTranslatesArgIntoExpected(6, &quot;Fizz&quot;);
+}
+</code></pre>
+
+<p>Running the above produces:</p>
+
+<pre><code>FAIL! 6 != Fizz
+</code></pre>
+
+<p>Onto the <a href="#fizzbuzz-green-5">&gt;&gt;&gt; <strong>Green phase</strong></a>.</p>
+
+<h5 id="a-name-fizzbuzz-red-6-a-red-fizzbuzz-step-6:55c470c7690bdfbade1f6280f1777cfd"><a name="fizzbuzz-red-6"></a>Red: FizzBuzz Step 6</h5>
+
+<p>Again for the sakes of page length we are going to skip onto &lsquo;10&rsquo; and whilst we are at it add &lsquo;9&rsquo; to our &lsquo;<strong>TestItPrintsFizzWhenGivenANumberDivisableBy3</strong>&rsquo; test. Very much like the previous Red phase we are going to add another test called &lsquo;<strong>TestItPrintsBuzzWhenGiven10</strong>&rsquo;. Again my refactoring sense are tingling for the same reasons as before, we have 2 very similar tests, but we will get to it in the Refactoring phase:</p>
+
+<pre><code class="language-php">&lt;?
+function TestItPrintsBuzzWhenGiven10() {
+	assertItTranslatesArgIntoExpected(10, &quot;Buzz&quot;);
+}
+</code></pre>
+
+<p>Running the above produces:</p>
+
+<pre><code>FAIL! 10 != Buzz
+</code></pre>
+
+<p>Onto the <a href="#fizzbuzz-green-6">&gt;&gt;&gt; <strong>Green phase</strong></a>.</p>
+
+<h5 id="a-name-fizzbuzz-red-7-a-red-fizzbuzz-step-7:55c470c7690bdfbade1f6280f1777cfd"><a name="fizzbuzz-red-7"></a>Red: FizzBuzz Step 7</h5>
+
+<p>Ok, we are now onto our final functional requirement, which is when we have a number divisible by both 3 and 5, we should print &lsquo;FizzBuzz&rsquo;, lets call it &lsquo;<strong>TestItPrintsFizzBuzzWhenGivenANumberDivisibleByBoth3and5</strong>&lsquo;:</p>
+
+<pre><code class="language-php">&lt;?
+function TestItPrintsFizzBuzzWhenGivenANumberDivisibleByBoth3and5() {
+	$testCases = array(
+		15,
+	);
+
+	assertTestCasesTranslateIntoExpected($testCases, &quot;FizzBuzz&quot;);
+}
+</code></pre>
+
+<p>Running the above produces:</p>
+
+<pre><code>FAIL! Fizz != FizzBuzz
+</code></pre>
+
+<p>Thats an interesting output, its because the code returns first by checking divisibility by 3 and because 15 is divisible by 3 we return &lsquo;Fizz&rsquo;. No matter though, its still a failure, onto <a href="#fizzbuzz-green-7">&gt;&gt;&gt; <strong>Green phase</strong></a>.</p>
+
+<h3 id="a-name-green-a-green-writing-just-enough-code:55c470c7690bdfbade1f6280f1777cfd"><a name="green"></a>GREEN: Writing just enough code</h3>
+
+<p>Writing just enough code to pass your test is probably the next hardest part of TDD. Its very easy to get carried away implementing more functionality into your target method without writing more tests, especially in the beginning. Your target is to satisfy the current failing test with the smallest amount of change to your production code. That may sometimes require you just to return a constant only to know in the next test you are going to replace that with a variable, but in the beginning its best to be more pedantic to really ingrain the discipline. Over time you will start to notice patterns and will be able to save your self the pedanticism.</p>
+
+<h5 id="green-fizzbuzz-step-1:55c470c7690bdfbade1f6280f1777cfd">Green: FizzBuzz Step 1</h5>
+
+<p>Here is our code to pass our first test:</p>
+
+<pre><code class="language-php">&lt;?
+function Translate($i) {
+	return 1;
+}
+</code></pre>
+
+<p>Notice how we are literally returning just a constant &lsquo;1&rsquo;. This is perfectably acceptable as our test runs with no failures, and is the smallest amount of change required to pass.</p>
+
+<p>We now move into our <a href="#refactor">&gt;&gt;&gt; <strong>Refactoring phase</strong></a>.</p>
+
+<h5 id="a-name-fizzbuzz-green-2-a-green-fizzbuzz-step-2:55c470c7690bdfbade1f6280f1777cfd"><a name="fizzbuzz-green-2"></a>Green: FizzBuzz Step 2</h5>
+
+<p>Keeping in mind the least amount of change required to implement the next failing test, here is our passing production code:</p>
+
+<pre><code class="language-php">&lt;?
+function Translate($i) {
+	return $i;
+}
+</code></pre>
+
+<p>We have turned our constant &lsquo;1&rsquo; into the arg varibale <code>$i</code>. Arguably we could of added an if statement to check the value of <code>$i</code> and return the appropriate constant, but I believe this to be a simpler code change.</p>
+
+<p>Tests are passing, so now onto the <a href="#fizzbuzz-refactor-2">&gt;&gt;&gt; <strong>Refactoring phase</strong></a>.</p>
+
+<h5 id="a-name-fizzbuzz-green-3-a-green-fizzbuzz-step-3:55c470c7690bdfbade1f6280f1777cfd"><a name="fizzbuzz-green-3"></a>Green: FizzBuzz Step 3</h5>
+
+<p>We now have our first interesting test case, we need to get our function to return &lsquo;Fizz&rsquo; when it receives a &lsquo;3&rsquo;. I believe the easiest way to do that would be to add a condition to check the <code>$i</code> variable. Here is what I have chosen to implement:</p>
+
+<pre><code class="language-php">&lt;?
+function Translate($i) {
+	if ($i == 3){
+		return &quot;Fizz&quot;;
+	}
+	return $i;
+}
+</code></pre>
+
+<p>Our tests are passing so we can move onto the next <a href="#fizzbuzz-refactor-3">&gt;&gt;&gt; <strong>Refactoring phase</strong></a>.</p>
+
+<h5 id="a-name-fizzbuzz-green-4-a-green-fizzbuzz-step-4:55c470c7690bdfbade1f6280f1777cfd"><a name="fizzbuzz-green-4"></a>Green: FizzBuzz Step 4</h5>
+
+<p>Another interesting test case, I think the quickest and simplest solution would be another conditional as follows:</p>
+
+<pre><code class="language-php">&lt;?
+function Translate($i) {
+	if ($i == 3){
+		return &quot;Fizz&quot;;
+	}
+	if ($i == 5){
+		return &quot;Buzz&quot;;
+	}
+	return $i;
+}
+</code></pre>
+
+<p>All tests are now passing, onto the next <a href="#fizzbuzz-refactor-4">&gt;&gt;&gt; <strong>Refactoring phase</strong></a></p>
+
+<h5 id="a-name-fizzbuzz-green-5-a-green-fizzbuzz-step-5:55c470c7690bdfbade1f6280f1777cfd"><a name="fizzbuzz-green-5"></a>Green: FizzBuzz Step 5</h5>
+
+<p>We now come to a fork in the road. We have both &lsquo;3&rsquo; and &lsquo;6&rsquo; which require the same outcome, and there are different approaches we could take. One approach could be to just add another condition like so:</p>
+
+<pre><code class="language-php">&lt;?
+	if ($i == 3){
+		return &quot;Fizz&quot;;
+	}
+	if ($i == 5){
+		return &quot;Buzz&quot;;
+	}
+	if ($i == 6){
+		return &quot;Fizz&quot;;
+	}
+</code></pre>
+
+<p>But it doesn&rsquo;t take much forethought to realise that we could be repeating that pattern a lot (9, 10, 12, 15, 18, 20, 21&hellip; etc), also this doesn&rsquo;t appear to be a simple change, we have added a fair amount of code, is there a shorter way? Well yes, we could condense the new conditional into a chanined OR expression on the first if like so:</p>
+
+<pre><code class="language-php">&lt;?
+	if ($i == 3 || $i == 6){
+		return &quot;Fizz&quot;;
+	}
+	if ($i == 5){
+		return &quot;Buzz&quot;;
+	}
+</code></pre>
+
+<p>But again, we could be repeating this pattern A LOT. So we are really only left with searching for an algroithm that saves us from having to chain OR&rsquo;s. Luckily modulus comes to mind and would solve this problem in less characters. Here is my implementation with modulus:</p>
+
+<pre><code class="language-php">&lt;?
+function Translate($i) {
+	if ($i % 3 == 0) {
+		return &quot;Fizz&quot;;
+	}
+	if ($i == 5) {
+		return &quot;Buzz&quot;;
+	}
+	return $i;
+}
+</code></pre>
+
+<p>Thats pretty neat, tests are passing. Onto the next <a href="#fizzbuzz-refactor-5">&gt;&gt;&gt; <strong>Refactoring phase</strong></a></p>
+
+<h5 id="a-name-fizzbuzz-green-6-a-green-fizzbuzz-step-6:55c470c7690bdfbade1f6280f1777cfd"><a name="fizzbuzz-green-6"></a>Green: FizzBuzz Step 6</h5>
+
+<p>Very much like the Green phase before we come to a fork, but we have learned from our previous encounter and know that modulus will be the neatest and simplest answer to our problem:</p>
+
+<pre><code class="language-php">&lt;?
+function Translate($i) {
+	if ($i % 3 == 0) {
+		return &quot;Fizz&quot;;
+	}
+	if ($i % 5 == 0) {
+		return &quot;Buzz&quot;;
+	}
+	return $i;
+}
+</code></pre>
+
+<p>Excellent. Onto the next <a href="#fizzbuzz-refactor-6">&gt;&gt;&gt; <strong>Refactoring phase</strong></a></p>
+
+<h5 id="a-name-fizzbuzz-green-7-a-green-fizzbuzz-step-7:55c470c7690bdfbade1f6280f1777cfd"><a name="fizzbuzz-green-7"></a>Green: FizzBuzz Step 7</h5>
+
+<p>We now have our final requirement and a failing test, great. How should we approach this problem, we currently have the following:</p>
+
+<pre><code class="language-php">&lt;?
+function Translate($i) {
+	if ($i % 3 == 0) {
+		return &quot;Fizz&quot;;
+	}
+	if ($i % 5 == 0) {
+		return &quot;Buzz&quot;;
+	}
+	return $i;
+}
+</code></pre>
+
+<p>We could use a preceeding conditional to check both divisibility by 3 and 5 and return like so:</p>
+
+<pre><code class="language-php">&lt;?
+function Translate($i) {
+	if ($i % 3 == 0 &amp;&amp; $i % 5 == 0) {
+		return &quot;FizzBuzz&quot;;
+	}
+	if ($i % 3 == 0) {
+		return &quot;Fizz&quot;;
+	}
+	if ($i % 5 == 0) {
+		return &quot;Buzz&quot;;
+	}
+	return $i;
+}
+</code></pre>
+
+<p>But that seems a little clunky and is quite a big change, it does work though. Or how about string concatination with a little ternary return statement:</p>
+
+<pre><code class="language-php">&lt;?
+function Translate($i) {
+	$translation = &quot;&quot;;
+	if ($i % 3 == 0) {
+		$translation .= &quot;Fizz&quot;;
+	}
+	if ($i % 5 == 0) {
+		$translation .= &quot;Buzz&quot;;
+	}
+
+	return ($translation) ? $translation : $i;
+}
+</code></pre>
+
+<p>Arguably this change is as big as the last, we have added a new conditional, but it does seem a little more elegant making more use of what was already there (not repeating conditional statements). I am happy to settle on this, but its really a matter of preference.</p>
+
+<p>Onto the final <a href="#fizzbuzz-refactor-7">&gt;&gt;&gt; <strong>Refactoring phase</strong></a></p>
+
+<h3 id="a-name-refactor-a-refactoring-refactor-both-tests-and-production-code:55c470c7690bdfbade1f6280f1777cfd"><a name="refactor"></a>REFACTORING: Refactor both tests and production code</h3>
+
+<p>The refactoring phase is akin to tidying up as you go along. This is where we enforce our over-arching ideologies such as DRY (Don&rsquo;t repeat yourself) and YAGNI (You ain&rsquo;t gunna need it). We must refactor BOTH production and test code as arguably both are as important as the other. It is vital to note that during this phase no new behaviour should be introduced, the definition of refactoring for the purposes of TDD is: <em>Changing the structure of the code without changing the behaviour</em>. All tests must still pass at the end of this phase to be able to continue back into Red.</p>
+
+<h5 id="refactor-fizzbuzz-step-1:55c470c7690bdfbade1f6280f1777cfd">Refactor: FizzBuzz Step 1</h5>
+
+<p>Following our FizzBuzz example there isn&rsquo;t anything to be refactored so we would skip back into the <a href="#fizzbuzz-red-2">&gt;&gt;&gt; <strong>Red phase</strong></a>.</p>
+
+<h5 id="a-name-fizzbuzz-refactor-2-a-refactor-fizzbuzz-step-2:55c470c7690bdfbade1f6280f1777cfd"><a name="fizzbuzz-refactor-2"></a>Refactor: FizzBuzz Step 2</h5>
+
+<p>Our current code base looks as follows:</p>
+
+<pre><code class="language-php">&lt;?
+function TestItPrints1WhenGiven1() {
+	if (Translate(1) != 1) {
+		print(&quot;FAIL! &quot;. Translate(1) . &quot; != 1&quot;);
+	}
+}
+
+function TestItPrints2WhenGiven2() {
+	if (Translate(2) != 2) {
+		print(&quot;FAIL! &quot;. Translate(1) . &quot; != 2&quot;);
+	}
+}
+</code></pre>
+
+<pre><code class="language-php">&lt;?
+function Translate($i) {
+	return $i;
+}
+</code></pre>
+
+<p>I believe we have a DRY violation in our test code base, the 2 test contents look rather similar, and I&rsquo;d like to refactor into a helper function as follows:</p>
+
+<pre><code class="language-php">&lt;?
+function assertItTranslatesArgIntoExpected($arg, $expected) {
+	if (Translate($arg) != $expected) {
+		print(&quot;FAIL! &quot;. Translate($arg) .&quot; != &quot;. $expected);
+	}
+}
+</code></pre>
+
+<p>This leaves us with in our test code:</p>
+
+<pre><code class="language-php">&lt;?
+function TestItPrints1WhenGiven1() {
+	assertItTranslatesArgIntoExpected(1, 1);
+}
+
+function TestItPrints2WhenGiven2() {
+	assertItTranslatesArgIntoExpected(2, 2);
+}
+
+function assertItTranslatesArgIntoExpected($arg, $expected) {
+	if (Translate($arg) != $expected) {
+		print(&quot;FAIL! &quot;. Translate($arg) .&quot; != &quot;. $expected);
+	}
+}
+</code></pre>
+
+<p>There is still nothing to refactor for the production code, and that is ok. Back into the <a href="#fizzbuzz-red-3">&gt;&gt;&gt; <strong>Red phase</strong></a>.</p>
+
+<h5 id="a-name-fizzbuzz-refactor-3-a-refactor-fizzbuzz-step-3:55c470c7690bdfbade1f6280f1777cfd"><a name="fizzbuzz-refactor-3"></a>Refactor: FizzBuzz Step 3</h5>
+
+<p>Our current code base looks as follows:</p>
+
+<pre><code class="language-php">&lt;?
+function TestItPrints1WhenGiven1() {
+	assertItTranslatesArgIntoExpected(1, 1);
+}
+
+function TestItPrints2WhenGiven2() {
+	assertItTranslatesArgIntoExpected(2, 2);
+}
+
+function TestItPrintsFizzWhenGiven3() {
+	assertItTranslatesArgIntoExpected(3, &quot;Fizz&quot;);
+}
+
+function assertItTranslatesArgIntoExpected($arg, $expected) {
+	if (Translate($arg) != $expected) {
+		print(&quot;FAIL! &quot;. Translate($arg) .&quot; != &quot;. $expected);
+	}
+}
+</code></pre>
+
+<pre><code class="language-php">&lt;?
+function Translate($i) {
+	if ($i == 3){
+		return &quot;Fizz&quot;;
+	}
+	return $i;
+}
+</code></pre>
+
+<p>Doesn&rsquo;t look like there is much to refactor right now. Onto the next <a href="#fizzbuzz-red-4">&gt;&gt;&gt; <strong>Red phase</strong></a>.</p>
+
+<h5 id="a-name-fizzbuzz-refactor-4-a-refactor-fizzbuzz-step-4:55c470c7690bdfbade1f6280f1777cfd"><a name="fizzbuzz-refactor-4"></a>Refactor: FizzBuzz Step 4</h5>
+
+<p>Like before there doesn&rsquo;t appear to be much to refactor, so we shall skip straight on to our next <a href="#fizzbuzz-red-5">&gt;&gt;&gt; <strong>Red phase</strong></a>.</p>
+
+<h5 id="a-name-fizzbuzz-refactor-5-a-refactor-fizzbuzz-step-5:55c470c7690bdfbade1f6280f1777cfd"><a name="fizzbuzz-refactor-5"></a>Refactor: FizzBuzz Step 5</h5>
+
+<p>As mentioned in the previous Red phase, we now have 2 tests that look awfully similar:</p>
+
+<pre><code class="language-php">&lt;?
+function TestItPrints1WhenGiven1() {
+	assertItTranslatesArgIntoExpected(1, 1);
+}
+
+function TestItPrints2WhenGiven2() {
+	assertItTranslatesArgIntoExpected(2, 2);
+}
+
+function TestItPrintsFizzWhenGiven3() {
+	assertItTranslatesArgIntoExpected(3, &quot;Fizz&quot;);
+}
+
+function TestItPrintsBuzzWhenGiven5() {
+	assertItTranslatesArgIntoExpected(5, &quot;Buzz&quot;);
+}
+
+function TestItPrintsFizzWhenGiven6() {
+	assertItTranslatesArgIntoExpected(6, &quot;Fizz&quot;);
+}
+
+function assertItTranslatesArgIntoExpected($arg, $expected) {
+	if (Translate($arg) != $expected) {
+		print(&quot;FAIL! &quot;. Translate($arg) .&quot; != &quot;. $expected);
+	}
+}
+</code></pre>
+
+<p>Infact its not a coincidence that they look similar, there is an underlying business rule that connects them (the fact that they are divisible by 3 and should return &lsquo;Fizz&rsquo;) and with that realisation our understanding of this program has expanded, we now know that args that are divisable by 3 should always return &lsquo;Fizz&rsquo; and our tests should reflect our new understanding by refactoring them into something with a more appropriate name&hellip; I propose &lsquo;<strong>TestItPrintsFizzWhenGivenANumberDivisableBy3</strong>&lsquo;:</p>
+
+<pre><code class="language-php">&lt;?
+function TestItPrints1WhenGiven1() {
+	assertItTranslatesArgIntoExpected(1, 1);
+}
+
+function TestItPrints2WhenGiven2() {
+	assertItTranslatesArgIntoExpected(2, 2);
+}
+
+function TestItPrintsBuzzWhenGiven5() {
+	assertItTranslatesArgIntoExpected(5, &quot;Buzz&quot;);
+}
+
+function TestItPrintsFizzWhenGivenANumberDivisableBy3() {
+	$testCases = array(
+		3,
+		6,
+	);
+
+	foreach ($testCases as $testCase) {
+		assertItTranslatesArgIntoExpected($testCase, &quot;Fizz&quot;);
+	}
+}
+
+function assertItTranslatesArgIntoExpected($arg, $expected) {
+	if (Translate($arg) != $expected) {
+		print(&quot;FAIL! &quot;. Translate($arg) .&quot; != &quot;. $expected);
+	}
+}
+</code></pre>
+
+<p>We can now move onto our next <a href="#fizzbuzz-red-6">&gt;&gt;&gt; <strong>Red phase</strong></a>.</p>
+
+<h5 id="a-name-fizzbuzz-refactor-6-a-refactor-fizzbuzz-step-6:55c470c7690bdfbade1f6280f1777cfd"><a name="fizzbuzz-refactor-6"></a>Refactor: FizzBuzz Step 6</h5>
+
+<p>We are back to where we were last refactoring phase, we have 2 tests that are intriniscally linked by a business rule:</p>
+
+<pre><code class="language-php">&lt;?
+function TestItPrints1WhenGiven1() {
+	assertItTranslatesArgIntoExpected(1, 1);
+}
+
+function TestItPrints2WhenGiven2() {
+	assertItTranslatesArgIntoExpected(2, 2);
+}
+
+function TestItPrintsBuzzWhenGiven5() {
+	assertItTranslatesArgIntoExpected(5, &quot;Buzz&quot;);
+}
+
+function TestItPrintsFizzWhenGivenANumberDivisableBy3() {
+	$testCases = array(
+		3,
+		6,
+        9,
+	);
+
+	foreach ($testCases as $testCase) {
+		assertItTranslatesArgIntoExpected($testCase, &quot;Fizz&quot;);
+	}
+}
+
+function TestItPrintsBuzzWhenGiven10() {
+	assertItTranslatesArgIntoExpected(10, &quot;Buzz&quot;);
+}
+
+function assertItTranslatesArgIntoExpected($arg, $expected) {
+	if (Translate($arg) != $expected) {
+		print(&quot;FAIL! &quot;. Translate($arg) .&quot; != &quot;. $expected);
+	}
+}
+</code></pre>
+
+<p>So to reflect our new understanding of the domain we shall condense the 2 tests into a single, and we can call it &lsquo;<strong>TestItPrintsBuzzWhenGivenANumberDivisibleBy5</strong>&lsquo;:</p>
+
+<pre><code class="language-php">&lt;?
+function TestItPrints1WhenGiven1() {
+	assertItTranslatesArgIntoExpected(1, 1);
+}
+
+function TestItPrints2WhenGiven2() {
+	assertItTranslatesArgIntoExpected(2, 2);
+}
+
+function TestItPrintsFizzWhenGivenANumberDivisableBy3() {
+	$testCases = array(
+		3,
+		6,
+		9,
+	);
+
+	foreach ($testCases as $testCase) {
+		assertItTranslatesArgIntoExpected($testCase, &quot;Fizz&quot;);
+	}
+}
+
+function TestItPrintsBuzzWhenGivenANumberDivisibleBy5() {
+	$testCases = array(
+		5,
+		10,
+	);
+
+	foreach ($testCases as $testCase) {
+		assertItTranslatesArgIntoExpected($testCase, &quot;Buzz&quot;);
+	}
+}
+
+function assertItTranslatesArgIntoExpected($arg, $expected) {
+	if (Translate($arg) != $expected) {
+		print(&quot;FAIL! &quot;. Translate($arg) .&quot; != &quot;. $expected);
+	}
+}
+</code></pre>
+
+<p>Brilliant, but we still have our original 2 tests &lsquo;<strong>TestItPrints1WhenGiven1</strong>&rsquo; and &lsquo;<strong>TestItPrints2WhenGiven2</strong>&rsquo; which with our new understanding of the system can actually be refactored into their own condensed test, because we know that any number that is NOT divisible by 3 or 5 should return the original number, so lets call that test &lsquo;<strong>TestItPrintsNumberWhenGivenANumberNotDivisibleBy3or5</strong>&lsquo;:</p>
+
+<pre><code class="language-php">&lt;?
+function TestItPrintsNumberWhenGivenANumberNotDivisibleBy3or5() {
+	$testCases = array(
+		1,
+		2,
+		4,
+		7,
+		8,
+	);
+
+	foreach ($testCases as $testCase) {
+		assertItTranslatesArgIntoExpected($testCase, $testCase);
+	}
+}
+
+function TestItPrintsFizzWhenGivenANumberDivisableBy3() {
+	$testCases = array(
+		3,
+		6,
+		9,
+	);
+
+	foreach ($testCases as $testCase) {
+		assertItTranslatesArgIntoExpected($testCase, &quot;Fizz&quot;);
+	}
+}
+
+function TestItPrintsBuzzWhenGivenANumberDivisibleBy5() {
+	$testCases = array(
+		5,
+		10,
+	);
+
+	foreach ($testCases as $testCase) {
+		assertItTranslatesArgIntoExpected($testCase, &quot;Buzz&quot;);
+	}
+}
+
+function assertItTranslatesArgIntoExpected($arg, $expected) {
+	if (Translate($arg) != $expected) {
+		print(&quot;FAIL! &quot;. Translate($arg) .&quot; != &quot;. $expected);
+	}
+}
+</code></pre>
+
+<p>And whilst we are at it, lets refactor all that looping that looks rather similar:</p>
+
+<pre><code class="language-php">&lt;?
+function TestItPrintsNumberWhenGivenANumberNotDivisibleBy3or5() {
+	$testCases = array(
+		1,
+		2,
+		4,
+		7,
+		8,
+	);
+
+	assertTestCasesTranslateIntoExpected($testCases, null);
+}
+
+function TestItPrintsFizzWhenGivenANumberDivisableBy3() {
+	$testCases = array(
+		3,
+		6,
+		9,
+	);
+
+	assertTestCasesTranslateIntoExpected($testCases, &quot;Fizz&quot;);
+}
+
+function TestItPrintsBuzzWhenGivenANumberDivisibleBy5() {
+	$testCases = array(
+		5,
+		10,
+	);
+
+	assertTestCasesTranslateIntoExpected($testCases, &quot;Buzz&quot;);
+}
+
+function assertTestCasesTranslateIntoExpected($testCases, $expectedValue) {
+	foreach ($testCases as $testCase) {
+		$expected = ($expectedValue == null ? $testCase : $expectedValue);
+		assertItTranslatesArgIntoExpected($testCase, $expected);
+	}
+}
+
+function assertItTranslatesArgIntoExpected($arg, $expected) {
+	if (Translate($arg) != $expected) {
+		print(&quot;FAIL! &quot;. Translate($arg) .&quot; != &quot;. $expected);
+	}
+}
+</code></pre>
+
+<p>Much better&hellip; <a href="#fizzbuzz-red-7">&gt;&gt;&gt; <strong>Red phase</strong></a>.</p>
+
+<h5 id="a-name-fizzbuzz-refactor-7-a-refactor-fizzbuzz-step-7:55c470c7690bdfbade1f6280f1777cfd"><a name="fizzbuzz-refactor-7"></a>Refactor: FizzBuzz Step 7</h5>
+
+<p>Well after all that we have ended up with:</p>
+
+<pre><code class="language-php">&lt;?
+function TestItPrintsNumberWhenGivenANumberNotDivisibleBy3or5() {
+	$testCases = array(
+		1,
+		2,
+		4,
+		7,
+		8,
+	);
+
+	assertTestCasesTranslateIntoExpected($testCases, null);
+}
+
+function TestItPrintsFizzWhenGivenANumberDivisableBy3() {
+	$testCases = array(
+		3,
+		6,
+		9,
+	);
+
+	assertTestCasesTranslateIntoExpected($testCases, &quot;Fizz&quot;);
+}
+
+function TestItPrintsBuzzWhenGivenANumberDivisibleBy5() {
+	$testCases = array(
+		5,
+		10,
+	);
+
+	assertTestCasesTranslateIntoExpected($testCases, &quot;Buzz&quot;);
+}
+
+function TestItPrintsFizzBuzzWhenGivenANumberDivisibleByBoth3and5() {
+	$testCases = array(
+		15,
+	);
+
+	assertTestCasesTranslateIntoExpected($testCases, &quot;FizzBuzz&quot;);
+}
+
+function assertTestCasesTranslateIntoExpected($testCases, $expectedValue) {
+	foreach ($testCases as $testCase) {
+		$expected = ($expectedValue == null ? $testCase : $expectedValue);
+		assertItTranslatesArgIntoExpected($testCase, $expected);
+	}
+}
+
+function assertItTranslatesArgIntoExpected($arg, $expected) {
+	if (Translate($arg) != $expected) {
+		print(&quot;FAIL! &quot;. Translate($arg) .&quot; != &quot;. $expected);
+	}
+}
+</code></pre>
+
+<pre><code class="language-php">&lt;?
+function Translate($i) {
+	$translation = &quot;&quot;;
+	if ($i % 3 == 0) {
+		$translation .= &quot;Fizz&quot;;
+	}
+	if ($i % 5 == 0) {
+		$translation .= &quot;Buzz&quot;;
+	}
+
+	return ($translation) ? $translation : $i;
+}
+</code></pre>
+
+<p>Doesn&rsquo;t look like there is much to refactor. Looks like we are done!</p>
+
+          </div>
+          <ul class="list-inline text-center center-block">
+            <li>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-via="adeduke">Tweet</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </li>
+            <li>
+              <div class="changetip_tipme_button" data-bid="30e8e6cf-a6e3-4316-ba9e-8cd3a1523db0" data-uid="25c652bbd2c7469989fc26a687111fd0"></div><script>(function(document,script,id){var js,r=document.getElementsByTagName(script)[0],protocol=/^http:/.test(document.location)?'http':'https';if(!document.getElementById(id)){js=document.createElement(script);js.id=id;js.src=protocol+'://widgets.changetip.com/public/js/widgets.js';r.parentNode.insertBefore(js,r)}}(document,'script','changetip_w_0'));</script>
+          </li>
+        </ul>
+        </div>
+        <ul class="pager">
+          
+          
+            <li class="next">
+              <a href="http://localhost:1313/2015/08/how-to-create-a-private-ethereum-chain/" title="How To Create A Private Ethereum Chain">
+                Newer <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          
+        </ul>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+	(function() {
+		
+		
+		if (window.location.hostname == "localhost") {
+			return;
+		}
+
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		var disqus_shortname = 'adeduke';
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+    <footer>
+        <p class="text-muted credit">&copy; 2015. All rights reserved.</p>
+    </footer>
+    
+    <script src="http://localhost:1313//js/jquery-1.10.2.min.js"></script>
+    <script src="http://localhost:1313//js/bootstrap.min.js"></script>
+    <script src="http://localhost:1313//js/bootstrap.js"></script>
+    <script type="text/javascript" src="http://localhost:1313//js/hc.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-35718583-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  <script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
+

@@ -6,8 +6,841 @@
     <description>Recent content in Blogs on Ade Duke</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sat, 29 Aug 2015 13:51:57 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 30 Sep 2015 10:00:00 +0100</lastBuildDate>
     <atom:link href="http://adeduke.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Test Driven Development - A Guided Tour</title>
+      <link>http://adeduke.com/2015/09/test-driven-development---a-guided-tour/</link>
+      <pubDate>Wed, 30 Sep 2015 10:00:00 +0100</pubDate>
+      
+      <guid>http://adeduke.com/2015/09/test-driven-development---a-guided-tour/</guid>
+      <description>
+
+&lt;p class=&#34;lead&#34;&gt;This is an article I wrote a while back, but hadn&#39;t published. It will take you through what TDD is, why you&#39;d want to do it and how to do so.&lt;/p&gt;
+
+&lt;h2 id=&#34;what:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;What&lt;/h2&gt;
+
+&lt;p&gt;Test-Driven Development is a discipline for writing software. The developer works in a short repetitive cycle known commonly as: Red, Green, Refactor. Each phase of the cycle requiring different action to be undertaken:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#red&#34;&gt;&lt;strong&gt;Red&lt;/strong&gt;: Write a failing test&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#green&#34;&gt;&lt;strong&gt;Green&lt;/strong&gt;: Write just enough code to pass the test&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#refactor&#34;&gt;&lt;strong&gt;Refactor&lt;/strong&gt;: Refactor both tests and production code&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;As TDD is a discipline, it like other disciplines requires practise. Practising TDD on a particular problem is commonly called a &amp;lsquo;Code Kata&amp;rsquo;. Code Katas should be practised regularly when an active project employing TDD is not being undertaken, this will ensure the developer doesn&amp;rsquo;t lose the discipline.&lt;/p&gt;
+
+&lt;h2 id=&#34;why:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;Why&lt;/h2&gt;
+
+&lt;p&gt;Writing the minimum amount of bug free code to satisfy requirements is hard, really hard.&lt;/p&gt;
+
+&lt;p&gt;Every line of code written by a developer has the potential to introduce new bugs into the system, every method composed has the potential to veer away from the requirements and every design pattern introduced has the potential to add un-needed complexity. Add to this that there are many solutions to any given software problem and that developers come with their own set of flaws and you quickly see the cocktail of complexity emerging. No wonder then why ~65% of software projects undertaken fail (note that the developer isn&amp;rsquo;t the sole reason for this failure rate, but is definitely apart of it).&lt;/p&gt;
+
+&lt;p&gt;It is for these reasons I use TDD. TDD provides an assurance that bare back development does not, and its not just as developers that we see the benefits. The benefits that I have found from practising TDD are as follows:&lt;/p&gt;
+
+&lt;h4 id=&#34;beneficiaries:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;Beneficiaries:&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Code&lt;/li&gt;
+&lt;li&gt;Developer&lt;/li&gt;
+&lt;li&gt;Business&lt;/li&gt;
+&lt;li&gt;Process (Software development process)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;benefits:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;Benefits:&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Facilitating change&lt;/strong&gt;: Being able to make large changes to your existing system is much less daunting and risky when you know you have tests to cover your back. [&lt;em&gt;Developer, Business&lt;/em&gt;]&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Better design&lt;/strong&gt;: You naturally develop with modularisation in mind, otherwise you wouldn&amp;rsquo;t be able to test the code you are writing. [&lt;em&gt;Code, Developer&lt;/em&gt;]&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Living documentation&lt;/strong&gt;: Provided you name your tests well, all the documentation required for another developer to understand your code is in the tests. [&lt;em&gt;Code, Developer&lt;/em&gt;]&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ease integrations&lt;/strong&gt;: Connecting distant services becomes much less of an ordeal when you practise TDD as both ends have already been tested with mocks. [&lt;em&gt;Business, Developer&lt;/em&gt;]&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flow and productivity&lt;/strong&gt;: Spending less time debugging (which naturally reduces with TDD) means you spend more time developing, and moving forwards is much more productive. [&lt;em&gt;Process, Developer&lt;/em&gt;]&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stronger guarantees&lt;/strong&gt;: When you practise TDD you have larger guarantee that the code you deploy works. [&lt;em&gt;Business, Developer, Code&lt;/em&gt;]&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Regression&lt;/strong&gt;: Regression tests are baked into the TDD process, thus you get regression tests for free. [&lt;em&gt;Business, Developer, Code&lt;/em&gt;]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;how:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;How&lt;/h2&gt;
+
+&lt;h3 id=&#34;a-name-red-a-red-writing-failing-tests:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;red&#34;&gt;&lt;/a&gt;RED: Writing Failing Tests&lt;/h3&gt;
+
+&lt;h4 id=&#34;naming-tests:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;Naming Tests&lt;/h4&gt;
+
+&lt;p&gt;Naming tests is the first step of the Red phase and sometimes seen as the hardest part of TDD, and rightly so, as everyone knows the 2 hardest problems in computing sciences is cache invalidation and naming things (Phil Karlton). The aim is to summerise in a sentance the specific behaviour you require, and call your test that. Here are a few examples:&lt;/p&gt;
+
+&lt;p&gt;&lt;a name=&#34;fizzbuzz-naming&#34;&gt;&lt;/a&gt;Lets imagine we are implementing FizzBuzz. The first and simplest test case we know is that when given the number 1, it prints the number 1, so lets call it just that: &amp;lsquo;&lt;strong&gt;TestItPrints1WhenGiven1&lt;/strong&gt;&amp;rsquo;. Next test case is that when given the number 2 it prints the number 2, so lets keep consistent and call it: &amp;lsquo;&lt;strong&gt;TestItPrints2WhenGiven2&lt;/strong&gt;&amp;lsquo;&lt;/p&gt;
+
+&lt;p&gt;Lets now imagine we are implementing a javascript powered menu that converts a UL into an interactive menu. Our first behaviour here is likely that given an ID it grabs the DOM element so lets call our first test case: &amp;lsquo;&lt;strong&gt;TestItGetsDomElementById&lt;/strong&gt;&amp;rsquo;. Now we can get DOM elements our second behaviour is that it will display a warning if the DOM element got by ID is not an UL, so lets call that: &amp;lsquo;&lt;strong&gt;TestItDisplaysWarningIfDomElementIsNotUL&lt;/strong&gt;&amp;lsquo;&lt;/p&gt;
+
+&lt;p&gt;As you can see, each test name is an apt summary of exactly the behaviour we require, there is no ambiguity about what the production code should be doing.&lt;/p&gt;
+
+&lt;h4 id=&#34;writing-the-test-case:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;Writing The Test Case&lt;/h4&gt;
+
+&lt;p&gt;Writing tests at an abstract level is about 2 things:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Scaffolding how you intend your code to work. E.g. The method name you intend to call and what parameters (if any) it will accept, and what it may or may not return.&lt;/li&gt;
+&lt;li&gt;Defining the acceptance criterea that signals if the code is working or not. E.g. In our FizzBuzz example above, when our method receives a &amp;lsquo;1&amp;rsquo; it is only considered working if it returns a &amp;lsquo;1&amp;rsquo; and not if it returned a &amp;lsquo;2&amp;rsquo;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Once you have your behaviour and name hopefully its fairly evident exactly what you need to do. To help solidify this, follow along the FizzBuzz example below:&lt;/p&gt;
+
+&lt;h5 id=&#34;red-fizzbuzz-step-1:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;Red: FizzBuzz Step 1&lt;/h5&gt;
+
+&lt;p&gt;Following on from the &lt;a href=&#34;#fizzbuzz-naming&#34;&gt;FizzBuzz test name&lt;/a&gt; examples above, here is the first test for &amp;lsquo;&lt;strong&gt;TestItPrints1WhenGiven1&lt;/strong&gt;&amp;lsquo;:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrints1WhenGiven1&lt;/span&gt;() {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (Translate(&lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;FAIL! &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; Translate(&lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot; != 1&amp;quot;&lt;/span&gt;);
+	}
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I have elected to call the method under test &lt;code&gt;Transalate()&lt;/code&gt; and it takes a single argument, the int that we want to translate (or not). Notice that &lt;code&gt;Translate()&lt;/code&gt; doesn&amp;rsquo;t exist yet, another benefit of TDD is that you get to decide on your public interfaces before you write them, not after!&lt;/p&gt;
+
+&lt;p&gt;If I were to run the above, I should get an error along the lines of no method &lt;code&gt;Translate()&lt;/code&gt; exists. This is sufficient for the Red phase, we can now move onto the &lt;a href=&#34;#green&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Green phase&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;a-name-fizzbuzz-red-2-a-red-fizzbuzz-step-2:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;fizzbuzz-red-2&#34;&gt;&lt;/a&gt;Red: FizzBuzz Step 2&lt;/h5&gt;
+
+&lt;p&gt;Now that we have 1 passing test and nothing to refactor, we can move onto writing our second test &amp;lsquo;&lt;strong&gt;TestItPrints2WhenGiven2&lt;/strong&gt;&amp;lsquo;:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrints2WhenGiven2&lt;/span&gt;() {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (Translate(&lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;FAIL! &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; Translate(&lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot; != 2&amp;quot;&lt;/span&gt;);
+	}
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Running the above produces:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;FAIL! 1 != 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This looks rather similar to our first test, and that has been noted. We will get to it in the next Refactor phase, but for now onto &lt;a href=&#34;#fizzbuzz-green-2&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Green phase&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;a-name-fizzbuzz-red-3-a-red-fizzbuzz-step-3:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;fizzbuzz-red-3&#34;&gt;&lt;/a&gt;Red: FizzBuzz Step 3&lt;/h5&gt;
+
+&lt;p&gt;We now have 2 passing tests, albeit very simple, our next test however is where things get interesting. We now hit the case where by we pass &amp;lsquo;3&amp;rsquo; to our &lt;code&gt;Translate()&lt;/code&gt; method and require it to return &amp;lsquo;Fizz&amp;rsquo;. I think we should call our test &amp;lsquo;&lt;strong&gt;TestItPrintsFizzWhenGiven3&lt;/strong&gt;&amp;rsquo;, and heres what it looks like:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsFizzWhenGiven3&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Running the above produces:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;FAIL! 3 != Fizz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Luckily as we refactored our code, implementing this test was just a 1 liner. Onto the &lt;a href=&#34;#fizzbuzz-green-3&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Green phase&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;a-name-fizzbuzz-red-4-a-red-fizzbuzz-step-4:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;fizzbuzz-red-4&#34;&gt;&lt;/a&gt;Red: FizzBuzz Step 4&lt;/h5&gt;
+
+&lt;p&gt;We are going to skip testing arg value of &amp;lsquo;4&amp;rsquo; for the sakes of page length, and move straight onto &amp;lsquo;5&amp;rsquo;. Now we need our code to return &amp;lsquo;Buzz&amp;rsquo; when it receives a &amp;lsquo;5&amp;rsquo; so I think &amp;lsquo;&lt;strong&gt;TestItReturnsBuzzWhenGiven5&lt;/strong&gt;&amp;rsquo; is suitable:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsBuzzWhenGiven5&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Running the above produces:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;FAIL! 5 != Buzz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Onto the &lt;a href=&#34;#fizzbuzz-green-4&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Green phase&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;a-name-fizzbuzz-red-5-a-red-fizzbuzz-step-5:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;fizzbuzz-red-5&#34;&gt;&lt;/a&gt;Red: FizzBuzz Step 5&lt;/h5&gt;
+
+&lt;p&gt;We now move onto an arg value of &amp;lsquo;6&amp;rsquo;, continuing in the same vein I am going to choose the test name &amp;lsquo;&lt;strong&gt;TestItPrintsFizzWhenGiven6&lt;/strong&gt;&amp;rsquo;. My refactoring sense are tingling, we appear to have 2 tests that take an argument and return &amp;lsquo;Fizz&amp;rsquo;, but we will leave that until the next Refactoring phase:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsFizzWhenGiven6&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;6&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Running the above produces:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;FAIL! 6 != Fizz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Onto the &lt;a href=&#34;#fizzbuzz-green-5&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Green phase&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;a-name-fizzbuzz-red-6-a-red-fizzbuzz-step-6:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;fizzbuzz-red-6&#34;&gt;&lt;/a&gt;Red: FizzBuzz Step 6&lt;/h5&gt;
+
+&lt;p&gt;Again for the sakes of page length we are going to skip onto &amp;lsquo;10&amp;rsquo; and whilst we are at it add &amp;lsquo;9&amp;rsquo; to our &amp;lsquo;&lt;strong&gt;TestItPrintsFizzWhenGivenANumberDivisableBy3&lt;/strong&gt;&amp;rsquo; test. Very much like the previous Red phase we are going to add another test called &amp;lsquo;&lt;strong&gt;TestItPrintsBuzzWhenGiven10&lt;/strong&gt;&amp;rsquo;. Again my refactoring sense are tingling for the same reasons as before, we have 2 very similar tests, but we will get to it in the Refactoring phase:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsBuzzWhenGiven10&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Running the above produces:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;FAIL! 10 != Buzz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Onto the &lt;a href=&#34;#fizzbuzz-green-6&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Green phase&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;a-name-fizzbuzz-red-7-a-red-fizzbuzz-step-7:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;fizzbuzz-red-7&#34;&gt;&lt;/a&gt;Red: FizzBuzz Step 7&lt;/h5&gt;
+
+&lt;p&gt;Ok, we are now onto our final functional requirement, which is when we have a number divisible by both 3 and 5, we should print &amp;lsquo;FizzBuzz&amp;rsquo;, lets call it &amp;lsquo;&lt;strong&gt;TestItPrintsFizzBuzzWhenGivenANumberDivisibleByBoth3and5&lt;/strong&gt;&amp;lsquo;:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsFizzBuzzWhenGivenANumberDivisibleByBoth3and5&lt;/span&gt;() {
+	&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;array&lt;/span&gt;(
+		&lt;span style=&#34;color: #40a070&#34;&gt;15&lt;/span&gt;,
+	);
+
+	assertTestCasesTranslateIntoExpected(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;FizzBuzz&amp;quot;&lt;/span&gt;);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Running the above produces:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;FAIL! Fizz != FizzBuzz
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Thats an interesting output, its because the code returns first by checking divisibility by 3 and because 15 is divisible by 3 we return &amp;lsquo;Fizz&amp;rsquo;. No matter though, its still a failure, onto &lt;a href=&#34;#fizzbuzz-green-7&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Green phase&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;a-name-green-a-green-writing-just-enough-code:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;green&#34;&gt;&lt;/a&gt;GREEN: Writing just enough code&lt;/h3&gt;
+
+&lt;p&gt;Writing just enough code to pass your test is probably the next hardest part of TDD. Its very easy to get carried away implementing more functionality into your target method without writing more tests, especially in the beginning. Your target is to satisfy the current failing test with the smallest amount of change to your production code. That may sometimes require you just to return a constant only to know in the next test you are going to replace that with a variable, but in the beginning its best to be more pedantic to really ingrain the discipline. Over time you will start to notice patterns and will be able to save your self the pedanticism.&lt;/p&gt;
+
+&lt;h5 id=&#34;green-fizzbuzz-step-1:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;Green: FizzBuzz Step 1&lt;/h5&gt;
+
+&lt;p&gt;Here is our code to pass our first test:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;Translate&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Notice how we are literally returning just a constant &amp;lsquo;1&amp;rsquo;. This is perfectably acceptable as our test runs with no failures, and is the smallest amount of change required to pass.&lt;/p&gt;
+
+&lt;p&gt;We now move into our &lt;a href=&#34;#refactor&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Refactoring phase&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;a-name-fizzbuzz-green-2-a-green-fizzbuzz-step-2:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;fizzbuzz-green-2&#34;&gt;&lt;/a&gt;Green: FizzBuzz Step 2&lt;/h5&gt;
+
+&lt;p&gt;Keeping in mind the least amount of change required to implement the next failing test, here is our passing production code:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;Translate&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We have turned our constant &amp;lsquo;1&amp;rsquo; into the arg varibale &lt;code&gt;$i&lt;/code&gt;. Arguably we could of added an if statement to check the value of &lt;code&gt;$i&lt;/code&gt; and return the appropriate constant, but I believe this to be a simpler code change.&lt;/p&gt;
+
+&lt;p&gt;Tests are passing, so now onto the &lt;a href=&#34;#fizzbuzz-refactor-2&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Refactoring phase&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;a-name-fizzbuzz-green-3-a-green-fizzbuzz-step-3:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;fizzbuzz-green-3&#34;&gt;&lt;/a&gt;Green: FizzBuzz Step 3&lt;/h5&gt;
+
+&lt;p&gt;We now have our first interesting test case, we need to get our function to return &amp;lsquo;Fizz&amp;rsquo; when it receives a &amp;lsquo;3&amp;rsquo;. I believe the easiest way to do that would be to add a condition to check the &lt;code&gt;$i&lt;/code&gt; variable. Here is what I have chosen to implement:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;Translate&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt;){
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Our tests are passing so we can move onto the next &lt;a href=&#34;#fizzbuzz-refactor-3&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Refactoring phase&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;a-name-fizzbuzz-green-4-a-green-fizzbuzz-step-4:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;fizzbuzz-green-4&#34;&gt;&lt;/a&gt;Green: FizzBuzz Step 4&lt;/h5&gt;
+
+&lt;p&gt;Another interesting test case, I think the quickest and simplest solution would be another conditional as follows:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;Translate&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt;){
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;5&lt;/span&gt;){
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;All tests are now passing, onto the next &lt;a href=&#34;#fizzbuzz-refactor-4&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Refactoring phase&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;a-name-fizzbuzz-green-5-a-green-fizzbuzz-step-5:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;fizzbuzz-green-5&#34;&gt;&lt;/a&gt;Green: FizzBuzz Step 5&lt;/h5&gt;
+
+&lt;p&gt;We now come to a fork in the road. We have both &amp;lsquo;3&amp;rsquo; and &amp;lsquo;6&amp;rsquo; which require the same outcome, and there are different approaches we could take. One approach could be to just add another condition like so:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt;){
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;5&lt;/span&gt;){
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;6&lt;/span&gt;){
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;;
+	}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But it doesn&amp;rsquo;t take much forethought to realise that we could be repeating that pattern a lot (9, 10, 12, 15, 18, 20, 21&amp;hellip; etc), also this doesn&amp;rsquo;t appear to be a simple change, we have added a fair amount of code, is there a shorter way? Well yes, we could condense the new conditional into a chanined OR expression on the first if like so:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;6&lt;/span&gt;){
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;5&lt;/span&gt;){
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;;
+	}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But again, we could be repeating this pattern A LOT. So we are really only left with searching for an algroithm that saves us from having to chain OR&amp;rsquo;s. Luckily modulus comes to mind and would solve this problem in less characters. Here is my implementation with modulus:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;Translate&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;5&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Thats pretty neat, tests are passing. Onto the next &lt;a href=&#34;#fizzbuzz-refactor-5&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Refactoring phase&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;a-name-fizzbuzz-green-6-a-green-fizzbuzz-step-6:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;fizzbuzz-green-6&#34;&gt;&lt;/a&gt;Green: FizzBuzz Step 6&lt;/h5&gt;
+
+&lt;p&gt;Very much like the Green phase before we come to a fork, but we have learned from our previous encounter and know that modulus will be the neatest and simplest answer to our problem:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;Translate&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Excellent. Onto the next &lt;a href=&#34;#fizzbuzz-refactor-6&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Refactoring phase&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;a-name-fizzbuzz-green-7-a-green-fizzbuzz-step-7:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;fizzbuzz-green-7&#34;&gt;&lt;/a&gt;Green: FizzBuzz Step 7&lt;/h5&gt;
+
+&lt;p&gt;We now have our final requirement and a failing test, great. How should we approach this problem, we currently have the following:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;Translate&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We could use a preceeding conditional to check both divisibility by 3 and 5 and return like so:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;Translate&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;FizzBuzz&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But that seems a little clunky and is quite a big change, it does work though. Or how about string concatination with a little ternary return statement:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;Translate&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;) {
+	&lt;span style=&#34;color: #bb60d5&#34;&gt;$translation&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;&amp;quot;&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;) {
+		&lt;span style=&#34;color: #bb60d5&#34;&gt;$translation&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;.=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;) {
+		&lt;span style=&#34;color: #bb60d5&#34;&gt;$translation&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;.=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;;
+	}
+
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$translation&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;?&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$translation&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Arguably this change is as big as the last, we have added a new conditional, but it does seem a little more elegant making more use of what was already there (not repeating conditional statements). I am happy to settle on this, but its really a matter of preference.&lt;/p&gt;
+
+&lt;p&gt;Onto the final &lt;a href=&#34;#fizzbuzz-refactor-7&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Refactoring phase&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;a-name-refactor-a-refactoring-refactor-both-tests-and-production-code:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;refactor&#34;&gt;&lt;/a&gt;REFACTORING: Refactor both tests and production code&lt;/h3&gt;
+
+&lt;p&gt;The refactoring phase is akin to tidying up as you go along. This is where we enforce our over-arching ideologies such as DRY (Don&amp;rsquo;t repeat yourself) and YAGNI (You ain&amp;rsquo;t gunna need it). We must refactor BOTH production and test code as arguably both are as important as the other. It is vital to note that during this phase no new behaviour should be introduced, the definition of refactoring for the purposes of TDD is: &lt;em&gt;Changing the structure of the code without changing the behaviour&lt;/em&gt;. All tests must still pass at the end of this phase to be able to continue back into Red.&lt;/p&gt;
+
+&lt;h5 id=&#34;refactor-fizzbuzz-step-1:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;Refactor: FizzBuzz Step 1&lt;/h5&gt;
+
+&lt;p&gt;Following our FizzBuzz example there isn&amp;rsquo;t anything to be refactored so we would skip back into the &lt;a href=&#34;#fizzbuzz-red-2&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Red phase&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;a-name-fizzbuzz-refactor-2-a-refactor-fizzbuzz-step-2:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;fizzbuzz-refactor-2&#34;&gt;&lt;/a&gt;Refactor: FizzBuzz Step 2&lt;/h5&gt;
+
+&lt;p&gt;Our current code base looks as follows:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrints1WhenGiven1&lt;/span&gt;() {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (Translate(&lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;FAIL! &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; Translate(&lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot; != 1&amp;quot;&lt;/span&gt;);
+	}
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrints2WhenGiven2&lt;/span&gt;() {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (Translate(&lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;FAIL! &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; Translate(&lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot; != 2&amp;quot;&lt;/span&gt;);
+	}
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;Translate&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I believe we have a DRY violation in our test code base, the 2 test contents look rather similar, and I&amp;rsquo;d like to refactor into a helper function as follows:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;assertItTranslatesArgIntoExpected&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;, &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;FAIL! &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot; != &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;);
+	}
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This leaves us with in our test code:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrints1WhenGiven1&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrints2WhenGiven2&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;assertItTranslatesArgIntoExpected&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;, &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;FAIL! &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot; != &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;);
+	}
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;There is still nothing to refactor for the production code, and that is ok. Back into the &lt;a href=&#34;#fizzbuzz-red-3&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Red phase&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;a-name-fizzbuzz-refactor-3-a-refactor-fizzbuzz-step-3:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;fizzbuzz-refactor-3&#34;&gt;&lt;/a&gt;Refactor: FizzBuzz Step 3&lt;/h5&gt;
+
+&lt;p&gt;Our current code base looks as follows:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrints1WhenGiven1&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrints2WhenGiven2&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsFizzWhenGiven3&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;assertItTranslatesArgIntoExpected&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;, &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;FAIL! &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot; != &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;);
+	}
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;Translate&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt;){
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Doesn&amp;rsquo;t look like there is much to refactor right now. Onto the next &lt;a href=&#34;#fizzbuzz-red-4&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Red phase&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;a-name-fizzbuzz-refactor-4-a-refactor-fizzbuzz-step-4:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;fizzbuzz-refactor-4&#34;&gt;&lt;/a&gt;Refactor: FizzBuzz Step 4&lt;/h5&gt;
+
+&lt;p&gt;Like before there doesn&amp;rsquo;t appear to be much to refactor, so we shall skip straight on to our next &lt;a href=&#34;#fizzbuzz-red-5&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Red phase&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;a-name-fizzbuzz-refactor-5-a-refactor-fizzbuzz-step-5:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;fizzbuzz-refactor-5&#34;&gt;&lt;/a&gt;Refactor: FizzBuzz Step 5&lt;/h5&gt;
+
+&lt;p&gt;As mentioned in the previous Red phase, we now have 2 tests that look awfully similar:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrints1WhenGiven1&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrints2WhenGiven2&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsFizzWhenGiven3&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsBuzzWhenGiven5&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsFizzWhenGiven6&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;6&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;assertItTranslatesArgIntoExpected&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;, &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;FAIL! &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot; != &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;);
+	}
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Infact its not a coincidence that they look similar, there is an underlying business rule that connects them (the fact that they are divisible by 3 and should return &amp;lsquo;Fizz&amp;rsquo;) and with that realisation our understanding of this program has expanded, we now know that args that are divisable by 3 should always return &amp;lsquo;Fizz&amp;rsquo; and our tests should reflect our new understanding by refactoring them into something with a more appropriate name&amp;hellip; I propose &amp;lsquo;&lt;strong&gt;TestItPrintsFizzWhenGivenANumberDivisableBy3&lt;/strong&gt;&amp;lsquo;:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrints1WhenGiven1&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrints2WhenGiven2&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsBuzzWhenGiven5&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsFizzWhenGivenANumberDivisableBy3&lt;/span&gt;() {
+	&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;array&lt;/span&gt;(
+		&lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;6&lt;/span&gt;,
+	);
+
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;foreach&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;) {
+		assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;);
+	}
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;assertItTranslatesArgIntoExpected&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;, &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;FAIL! &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot; != &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;);
+	}
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We can now move onto our next &lt;a href=&#34;#fizzbuzz-red-6&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Red phase&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;a-name-fizzbuzz-refactor-6-a-refactor-fizzbuzz-step-6:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;fizzbuzz-refactor-6&#34;&gt;&lt;/a&gt;Refactor: FizzBuzz Step 6&lt;/h5&gt;
+
+&lt;p&gt;We are back to where we were last refactoring phase, we have 2 tests that are intriniscally linked by a business rule:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrints1WhenGiven1&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrints2WhenGiven2&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsBuzzWhenGiven5&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsFizzWhenGivenANumberDivisableBy3&lt;/span&gt;() {
+	&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;array&lt;/span&gt;(
+		&lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;6&lt;/span&gt;,
+        &lt;span style=&#34;color: #40a070&#34;&gt;9&lt;/span&gt;,
+	);
+
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;foreach&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;) {
+		assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;);
+	}
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsBuzzWhenGiven10&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;assertItTranslatesArgIntoExpected&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;, &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;FAIL! &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot; != &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;);
+	}
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;So to reflect our new understanding of the domain we shall condense the 2 tests into a single, and we can call it &amp;lsquo;&lt;strong&gt;TestItPrintsBuzzWhenGivenANumberDivisibleBy5&lt;/strong&gt;&amp;lsquo;:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrints1WhenGiven1&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrints2WhenGiven2&lt;/span&gt;() {
+	assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsFizzWhenGivenANumberDivisableBy3&lt;/span&gt;() {
+	&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;array&lt;/span&gt;(
+		&lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;6&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;9&lt;/span&gt;,
+	);
+
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;foreach&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;) {
+		assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;);
+	}
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsBuzzWhenGivenANumberDivisibleBy5&lt;/span&gt;() {
+	&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;array&lt;/span&gt;(
+		&lt;span style=&#34;color: #40a070&#34;&gt;5&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;10&lt;/span&gt;,
+	);
+
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;foreach&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;) {
+		assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;);
+	}
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;assertItTranslatesArgIntoExpected&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;, &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;FAIL! &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot; != &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;);
+	}
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Brilliant, but we still have our original 2 tests &amp;lsquo;&lt;strong&gt;TestItPrints1WhenGiven1&lt;/strong&gt;&amp;rsquo; and &amp;lsquo;&lt;strong&gt;TestItPrints2WhenGiven2&lt;/strong&gt;&amp;rsquo; which with our new understanding of the system can actually be refactored into their own condensed test, because we know that any number that is NOT divisible by 3 or 5 should return the original number, so lets call that test &amp;lsquo;&lt;strong&gt;TestItPrintsNumberWhenGivenANumberNotDivisibleBy3or5&lt;/strong&gt;&amp;lsquo;:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsNumberWhenGivenANumberNotDivisibleBy3or5&lt;/span&gt;() {
+	&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;array&lt;/span&gt;(
+		&lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;4&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;7&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;8&lt;/span&gt;,
+	);
+
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;foreach&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;) {
+		assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;, &lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;);
+	}
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsFizzWhenGivenANumberDivisableBy3&lt;/span&gt;() {
+	&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;array&lt;/span&gt;(
+		&lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;6&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;9&lt;/span&gt;,
+	);
+
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;foreach&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;) {
+		assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;);
+	}
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsBuzzWhenGivenANumberDivisibleBy5&lt;/span&gt;() {
+	&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;array&lt;/span&gt;(
+		&lt;span style=&#34;color: #40a070&#34;&gt;5&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;10&lt;/span&gt;,
+	);
+
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;foreach&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;) {
+		assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;);
+	}
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;assertItTranslatesArgIntoExpected&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;, &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;FAIL! &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot; != &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;);
+	}
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And whilst we are at it, lets refactor all that looping that looks rather similar:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsNumberWhenGivenANumberNotDivisibleBy3or5&lt;/span&gt;() {
+	&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;array&lt;/span&gt;(
+		&lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;4&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;7&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;8&lt;/span&gt;,
+	);
+
+	assertTestCasesTranslateIntoExpected(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsFizzWhenGivenANumberDivisableBy3&lt;/span&gt;() {
+	&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;array&lt;/span&gt;(
+		&lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;6&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;9&lt;/span&gt;,
+	);
+
+	assertTestCasesTranslateIntoExpected(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsBuzzWhenGivenANumberDivisibleBy5&lt;/span&gt;() {
+	&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;array&lt;/span&gt;(
+		&lt;span style=&#34;color: #40a070&#34;&gt;5&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;10&lt;/span&gt;,
+	);
+
+	assertTestCasesTranslateIntoExpected(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;assertTestCasesTranslateIntoExpected&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt;, &lt;span style=&#34;color: #bb60d5&#34;&gt;$expectedValue&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;foreach&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;) {
+		&lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$expectedValue&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;?&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expectedValue&lt;/span&gt;);
+		assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;, &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;);
+	}
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;assertItTranslatesArgIntoExpected&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;, &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;FAIL! &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot; != &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;);
+	}
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Much better&amp;hellip; &lt;a href=&#34;#fizzbuzz-red-7&#34;&gt;&amp;gt;&amp;gt;&amp;gt; &lt;strong&gt;Red phase&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h5 id=&#34;a-name-fizzbuzz-refactor-7-a-refactor-fizzbuzz-step-7:55c470c7690bdfbade1f6280f1777cfd&#34;&gt;&lt;a name=&#34;fizzbuzz-refactor-7&#34;&gt;&lt;/a&gt;Refactor: FizzBuzz Step 7&lt;/h5&gt;
+
+&lt;p&gt;Well after all that we have ended up with:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsNumberWhenGivenANumberNotDivisibleBy3or5&lt;/span&gt;() {
+	&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;array&lt;/span&gt;(
+		&lt;span style=&#34;color: #40a070&#34;&gt;1&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;2&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;4&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;7&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;8&lt;/span&gt;,
+	);
+
+	assertTestCasesTranslateIntoExpected(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt;, &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsFizzWhenGivenANumberDivisableBy3&lt;/span&gt;() {
+	&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;array&lt;/span&gt;(
+		&lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;6&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;9&lt;/span&gt;,
+	);
+
+	assertTestCasesTranslateIntoExpected(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsBuzzWhenGivenANumberDivisibleBy5&lt;/span&gt;() {
+	&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;array&lt;/span&gt;(
+		&lt;span style=&#34;color: #40a070&#34;&gt;5&lt;/span&gt;,
+		&lt;span style=&#34;color: #40a070&#34;&gt;10&lt;/span&gt;,
+	);
+
+	assertTestCasesTranslateIntoExpected(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;TestItPrintsFizzBuzzWhenGivenANumberDivisibleByBoth3and5&lt;/span&gt;() {
+	&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;array&lt;/span&gt;(
+		&lt;span style=&#34;color: #40a070&#34;&gt;15&lt;/span&gt;,
+	);
+
+	assertTestCasesTranslateIntoExpected(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt;, &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;FizzBuzz&amp;quot;&lt;/span&gt;);
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;assertTestCasesTranslateIntoExpected&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt;, &lt;span style=&#34;color: #bb60d5&#34;&gt;$expectedValue&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;foreach&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCases&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;) {
+		&lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$expectedValue&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;?&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expectedValue&lt;/span&gt;);
+		assertItTranslatesArgIntoExpected(&lt;span style=&#34;color: #bb60d5&#34;&gt;$testCase&lt;/span&gt;, &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;);
+	}
+}
+
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;assertItTranslatesArgIntoExpected&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;, &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;) {
+		&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;FAIL! &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; Translate(&lt;span style=&#34;color: #bb60d5&#34;&gt;$arg&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot; != &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$expected&lt;/span&gt;);
+	}
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f0f0f0&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #007020&#34;&gt;&amp;lt;?&lt;/span&gt;
+&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #06287e&#34;&gt;Translate&lt;/span&gt;(&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;) {
+	&lt;span style=&#34;color: #bb60d5&#34;&gt;$translation&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;&amp;quot;&lt;/span&gt;;
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;) {
+		&lt;span style=&#34;color: #bb60d5&#34;&gt;$translation&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;.=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Fizz&amp;quot;&lt;/span&gt;;
+	}
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #40a070&#34;&gt;0&lt;/span&gt;) {
+		&lt;span style=&#34;color: #bb60d5&#34;&gt;$translation&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;.=&lt;/span&gt; &lt;span style=&#34;color: #4070a0&#34;&gt;&amp;quot;Buzz&amp;quot;&lt;/span&gt;;
+	}
+
+	&lt;span style=&#34;color: #007020; font-weight: bold&#34;&gt;return&lt;/span&gt; (&lt;span style=&#34;color: #bb60d5&#34;&gt;$translation&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;?&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$translation&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #bb60d5&#34;&gt;$i&lt;/span&gt;;
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Doesn&amp;rsquo;t look like there is much to refactor. Looks like we are done!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>How To Create A Private Ethereum Chain</title>

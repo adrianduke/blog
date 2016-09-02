@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogs on Ade Duke</title>
-    <link>http://adeduke.com/blog/</link>
+    <link>http://adeduke.co.uk/blog/</link>
     <description>Recent content in Blogs on Ade Duke</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Wed, 30 Sep 2015 10:00:00 +0100</lastBuildDate>
-    <atom:link href="http://adeduke.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://adeduke.co.uk/blog/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Test Driven Development - A Guided Tour</title>
-      <link>http://adeduke.com/2015/09/test-driven-development---a-guided-tour/</link>
+      <link>http://adeduke.co.uk/2015/09/test-driven-development---a-guided-tour/</link>
       <pubDate>Wed, 30 Sep 2015 10:00:00 +0100</pubDate>
       
-      <guid>http://adeduke.com/2015/09/test-driven-development---a-guided-tour/</guid>
+      <guid>http://adeduke.co.uk/2015/09/test-driven-development---a-guided-tour/</guid>
       <description>
 
 &lt;p class=&#34;lead&#34;&gt;This is an article I wrote a while back, but hadn&#39;t published. It will take you through what TDD is, why you&#39;d want to do it and how to do so.&lt;/p&gt;
@@ -844,14 +844,14 @@
     
     <item>
       <title>How To Create A Private Ethereum Chain</title>
-      <link>http://adeduke.com/2015/08/how-to-create-a-private-ethereum-chain/</link>
+      <link>http://adeduke.co.uk/2015/08/how-to-create-a-private-ethereum-chain/</link>
       <pubDate>Sat, 29 Aug 2015 13:51:57 +0100</pubDate>
       
-      <guid>http://adeduke.com/2015/08/how-to-create-a-private-ethereum-chain/</guid>
+      <guid>http://adeduke.co.uk/2015/08/how-to-create-a-private-ethereum-chain/</guid>
       <description>&lt;div class=&#34;container-fluid&#34;&gt;
     &lt;div class=&#34;row&#34;&gt;
         &lt;div class=&#34;col-xs-12 col-md-3&#34;&gt;
-            &lt;img src=&#34;http://adeduke.com/media/2015/08/ethereum-logo.png&#34; title=&#34;Ethereum logo&#34; class=&#34;img-responsive img-thumbnail img-circle center-block&#34;&gt;
+            &lt;img src=&#34;http://adeduke.co.uk/media/2015/08/ethereum-logo.png&#34; title=&#34;Ethereum logo&#34; class=&#34;img-responsive img-thumbnail img-circle center-block&#34;&gt;
         &lt;/div&gt;
         &lt;div class=&#34;col-xs-12 col-md-9&#34;&gt;
             &lt;p class=&#34;lead&#34;&gt;Setting up a private chain is useful for testing purposes or simply for playing around with, I couldn&#39;t find a good consolidated tutorial on it so I thought I would write my own.&lt;/p&gt;

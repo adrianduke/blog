@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ethereum on Ade Duke</title>
-    <link>http://adeduke.com/tags/ethereum/</link>
+    <link>http://adeduke.co.uk/tags/ethereum/</link>
     <description>Recent content in Ethereum on Ade Duke</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Sat, 29 Aug 2015 13:51:57 +0100</lastBuildDate>
-    <atom:link href="http://adeduke.com/tags/ethereum/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://adeduke.co.uk/tags/ethereum/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>How To Create A Private Ethereum Chain</title>
-      <link>http://adeduke.com/2015/08/how-to-create-a-private-ethereum-chain/</link>
+      <link>http://adeduke.co.uk/2015/08/how-to-create-a-private-ethereum-chain/</link>
       <pubDate>Sat, 29 Aug 2015 13:51:57 +0100</pubDate>
       
-      <guid>http://adeduke.com/2015/08/how-to-create-a-private-ethereum-chain/</guid>
+      <guid>http://adeduke.co.uk/2015/08/how-to-create-a-private-ethereum-chain/</guid>
       <description>&lt;div class=&#34;container-fluid&#34;&gt;
     &lt;div class=&#34;row&#34;&gt;
         &lt;div class=&#34;col-xs-12 col-md-3&#34;&gt;
-            &lt;img src=&#34;http://adeduke.com/media/2015/08/ethereum-logo.png&#34; title=&#34;Ethereum logo&#34; class=&#34;img-responsive img-thumbnail img-circle center-block&#34;&gt;
+            &lt;img src=&#34;http://adeduke.co.uk/media/2015/08/ethereum-logo.png&#34; title=&#34;Ethereum logo&#34; class=&#34;img-responsive img-thumbnail img-circle center-block&#34;&gt;
         &lt;/div&gt;
         &lt;div class=&#34;col-xs-12 col-md-9&#34;&gt;
             &lt;p class=&#34;lead&#34;&gt;Setting up a private chain is useful for testing purposes or simply for playing around with, I couldn&#39;t find a good consolidated tutorial on it so I thought I would write my own.&lt;/p&gt;

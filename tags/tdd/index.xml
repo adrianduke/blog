@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tdd on Ade Duke</title>
-    <link>http://adeduke.com/tags/tdd/</link>
+    <link>http://adeduke.co.uk/tags/tdd/</link>
     <description>Recent content in Tdd on Ade Duke</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Wed, 30 Sep 2015 10:00:00 +0100</lastBuildDate>
-    <atom:link href="http://adeduke.com/tags/tdd/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://adeduke.co.uk/tags/tdd/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Test Driven Development - A Guided Tour</title>
-      <link>http://adeduke.com/2015/09/test-driven-development---a-guided-tour/</link>
+      <link>http://adeduke.co.uk/2015/09/test-driven-development---a-guided-tour/</link>
       <pubDate>Wed, 30 Sep 2015 10:00:00 +0100</pubDate>
       
-      <guid>http://adeduke.com/2015/09/test-driven-development---a-guided-tour/</guid>
+      <guid>http://adeduke.co.uk/2015/09/test-driven-development---a-guided-tour/</guid>
       <description>
 
 &lt;p class=&#34;lead&#34;&gt;This is an article I wrote a while back, but hadn&#39;t published. It will take you through what TDD is, why you&#39;d want to do it and how to do so.&lt;/p&gt;
